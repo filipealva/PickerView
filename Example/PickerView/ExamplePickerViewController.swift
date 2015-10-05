@@ -108,7 +108,7 @@ class ExamplePickerViewController: UIViewController {
 
 extension ExamplePickerViewController: PickerViewDataSource {
     
-    // MARK: - FAPickerViewDataSource
+    // MARK: - PickerViewDataSource
     
     func numberOfRowsInPickerView(pickerView: PickerView) -> Int {
         switch presentationType {
@@ -132,7 +132,7 @@ extension ExamplePickerViewController: PickerViewDataSource {
 
 extension ExamplePickerViewController: PickerViewDelegate {
     
-    // MARK: - FAPickerViewDelegate
+    // MARK: - PickerViewDelegate
     
     func heightForRowInPickerView(pickerView: PickerView) -> CGFloat {
         return 50.0
