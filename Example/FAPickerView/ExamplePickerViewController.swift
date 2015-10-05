@@ -87,7 +87,7 @@ class ExamplePickerViewController: UIViewController {
         }
         
         if selectionStyle == .Image {
-            examplePicker.selectionImageView.image = UIImage(named: "selectionImage")!
+            examplePicker.selectionImageView.image = UIImage(named: "SelectionImage")!
         }
     }
     
