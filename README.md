@@ -1,6 +1,5 @@
 # FAPickerView
 
-[![CI Status](http://img.shields.io/travis/filipealva/FAPickerView.svg?style=flat)](https://travis-ci.org/filipealva/FAPickerView)
 [![Version](https://img.shields.io/cocoapods/v/FAPickerView.svg?style=flat)](http://cocoapods.org/pods/FAPickerView)
 [![License](https://img.shields.io/cocoapods/l/FAPickerView.svg?style=flat)](http://cocoapods.org/pods/FAPickerView)
 [![Platform](https://img.shields.io/cocoapods/p/FAPickerView.svg?style=flat)](http://cocoapods.org/pods/FAPickerView)
