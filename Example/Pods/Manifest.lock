@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  FAPickerView: 9ae05d791062345c60582d21c81d7a3c44b431f1
+  FAPickerView: 0c1be644abebf6bc222ff869a2a8e46e78dda853
 
 COCOAPODS: 0.39.0.beta.4
