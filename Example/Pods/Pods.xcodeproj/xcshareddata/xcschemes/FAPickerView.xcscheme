@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D928B99B731C721969AF0F23'
+               BlueprintIdentifier = '6CB8BF132BEFF416F3828F06'
                BlueprintName = 'FAPickerView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'FAPickerView.framework'>
