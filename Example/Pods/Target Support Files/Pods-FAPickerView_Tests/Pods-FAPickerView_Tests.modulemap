@@ -1,0 +1,6 @@
+framework module Pods_FAPickerView_Tests {
+  umbrella header "Pods-FAPickerView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module FAPickerView {
+  umbrella header "FAPickerView-umbrella.h"
+
+  export *
+  module * { export * }
+}

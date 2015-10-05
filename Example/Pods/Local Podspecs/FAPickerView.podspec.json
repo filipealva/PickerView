@@ -1,0 +1,25 @@
+{
+  "name": "FAPickerView",
+  "version": "0.1.0",
+  "summary": "A short description of FAPickerView.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/FAPickerView",
+  "license": "MIT",
+  "authors": {
+    "filipealva": "ofilipealvarenga@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/FAPickerView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "FAPickerView": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}
