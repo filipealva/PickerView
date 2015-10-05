@@ -1,5 +1,5 @@
 //
-//  FAPickerView.swift
+//  PickerView.swift
 //
 //  Created by Filipe Alvarenga on 19/05/15.
 //  Copyright (c) 2015 Filipe Alvarenga. All rights reserved.
