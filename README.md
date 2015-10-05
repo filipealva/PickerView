@@ -1,6 +1,5 @@
 # PickerView
 
-[![CI Status](http://img.shields.io/travis/filipealva/PickerView.svg?style=flat)](https://travis-ci.org/filipealva/PickerView)
 [![Version](https://img.shields.io/cocoapods/v/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
 [![License](https://img.shields.io/cocoapods/l/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
 [![Platform](https://img.shields.io/cocoapods/p/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
