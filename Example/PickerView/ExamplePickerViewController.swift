@@ -1,6 +1,6 @@
 //
 //  NumberPickerViewController.swift
-//  FAPickerView
+//  PickerView
 //
 //  Created by Filipe Alvarenga on 09/08/15.
 //  Copyright (c) 2015 Filipe Alvarenga. All rights reserved.
@@ -14,7 +14,7 @@ class ExamplePickerViewController: UIViewController {
     // MARK: - Nested Types
 
     enum PresentationType {
-        case Numbers(Int, Int), Names(Int, Int) // NOTE: (Int, Int) represent the rawValue's of FAPickerView style enums.
+        case Numbers(Int, Int), Names(Int, Int) // NOTE: (Int, Int) represent the rawValue's of PickerView style enums.
     }
 
     // MARK: - Properties
@@ -166,7 +166,7 @@ extension ExamplePickerViewController: PickerViewDelegate {
         } else {
             label.font = UIFont(name: "HelveticaNeue-Light", size: 26.0)
         }
-        label.textColor = UIColor.blackColor()
+        label.textColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
     
 }

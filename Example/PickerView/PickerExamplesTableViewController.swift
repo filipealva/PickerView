@@ -1,13 +1,12 @@
 //
 //  PickerExamplesTableViewController.swift
-//  FAPickerView
+//  PickerView
 //
 //  Created by Filipe Alvarenga on 09/08/15.
 //  Copyright (c) 2015 Filipe Alvarenga. All rights reserved.
 //
 
 import UIKit
-import PickerView
 
 class PickerExamplesTableViewController: UITableViewController {
     
@@ -32,6 +31,7 @@ class PickerExamplesTableViewController: UITableViewController {
                 self.pickedNumber = newSelectedValue
                 self.tableView.reloadData()
             }
+
         }
         
         if segue.identifier == "showNamePicker" {
@@ -58,7 +58,7 @@ extension PickerExamplesTableViewController {
         case 2:
             return pickedOSX != nil ? "You picked the OS X \(pickedOSX!)." : "You don't picked any OS X."
         default:
-            return "You can also set a custom apperance for the text in two different states (regular and highlighted) through FAPickerViewDelegate methods."
+            return "You can also set a custom apperance for the text in two different states (regular and highlighted) through PickerViewDelegate methods."
         }
     }
 
