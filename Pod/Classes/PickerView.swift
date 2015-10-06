@@ -431,6 +431,7 @@ public class PickerView: UIView {
     }
     
     private func configureFirstSelection() {
+        // Configure the first row selection: If some pre-selected row was set, we select it, else we select the nearby to middle at all.
         let rowToSelect = currentSelectedRow != 0 ? currentSelectedRow : Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
         selectedNearbyToMiddleRow(rowToSelect)
     }
@@ -456,6 +457,7 @@ extension PickerView: UITableViewDataSource {
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let pickerViewCell = tableView.dequeueReusableCellWithIdentifier(pickerViewCellIdentifier, forIndexPath: indexPath) as! SimplePickerTableViewCell
         
+        // As the first row have a different size to fit in the middle of the PickerView and rows below, the titleLabel position must be adjusted.
         if indexPath.row == 0 {
             let centerY = (self.frame.height / 2) - (rowHeight / 2)
             pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: centerY, width: frame.width, height: rowHeight)
@@ -502,6 +504,7 @@ extension PickerView: UITableViewDelegate {
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let numberOfRowsInPickerView = dataSource!.numberOfRowsInPickerView(self) * infinityRowsMultiplier
         
+        // When the scrolling reach the end on top/bottom we need to set the first/last row to appear in the center of PickerView, so that row must be bigger.
         if indexPath.row == 0 {
             return (frame.height / 2) + (rowHeight / 2)
         } else if numberOfRowsInPickerView > 0 && indexPath.row == numberOfRowsInPickerView - 1 {
@@ -522,21 +525,22 @@ extension PickerView: UIScrollViewDelegate {
     }
     
     public func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let partialRow = Float(targetContentOffset.memory.y / rowHeight)
-        var roundedRow = Int(lroundf(partialRow))
+        let partialRow = Float(targetContentOffset.memory.y / rowHeight) // Get the estimative of what row will be the selected when the scroll animation ends.
+        var roundedRow = Int(lroundf(partialRow)) // Round the estimative to a row
         
         if roundedRow < 0 {
             roundedRow = 0
         } else {
-            targetContentOffset.memory.y = CGFloat(roundedRow) * rowHeight
+            targetContentOffset.memory.y = CGFloat(roundedRow) * rowHeight // Set the targetContentOffset (where the scrolling position will be when the animation ends) to a rounded value.
         }
         
+        // Update the currentSelectedRow and notify the delegate that we have a new selected row.
         currentSelectedRow = roundedRow % numberOfRowsByDataSource
-
         delegate?.pickerView(self, didSelectRow: roundedRow % dataSource!.numberOfRowsInPickerView(self))
     }
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        // When the orientation changes during the scroll, is required to reset the picker to select the nearby to middle row.
         if orientationChanged {
             selectedNearbyToMiddleRow(currentSelectedRow)
             orientationChanged = false
@@ -549,6 +553,7 @@ extension PickerView: UIScrollViewDelegate {
         let partialRow = Float(scrollView.contentOffset.y / rowHeight)
         let roundedRow = Int(lroundf(partialRow))
         
+        // Avoid to have two highlighted rows at the same time
         if let visibleRows = tableView.indexPathsForVisibleRows {
             for indexPath in visibleRows {
                 if let cellToUnhighlight = tableView.cellForRowAtIndexPath(indexPath) as? SimplePickerTableViewCell {
@@ -557,6 +562,7 @@ extension PickerView: UIScrollViewDelegate {
             }
         }
         
+        // Highlight the current selected cell during scroll
         if let cellToHighlight = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: roundedRow, inSection: 0)) as? SimplePickerTableViewCell {
             delegate?.styleForHighlightedLabel(cellToHighlight.titleLabel, inPickerView: self)
         }
