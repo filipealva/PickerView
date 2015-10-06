@@ -32,7 +32,7 @@ class ExamplePickerViewController: UIViewController {
     }()
     
     let osxNames = ["Cheetah", "Puma", "Jaguar", "Panther", "Tiger", "Leopard", "Snow Leopard", "Lion", "Montain Lion",
-                    "Mavericks", "Yosemite", "El Capitain"]
+                    "Mavericks", "Yosemite", "El Capitan"]
     
     var presentationType = PresentationType.Numbers(0, 0)
     

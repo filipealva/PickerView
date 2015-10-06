@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/cocoapods/l/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
 [![Platform](https://img.shields.io/cocoapods/p/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
 
+(https://github.com/bguidolim/PickerView/raw/master/demo.gif "Demo")
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

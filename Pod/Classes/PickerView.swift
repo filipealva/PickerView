@@ -41,7 +41,7 @@ public class PickerView: UIView {
     - parameter Infinite: Loop through the data source offering a infinite scrolling experience to the user.
     */
     
-    public enum ScrollingStyle {
+    public enum ScrollingStyle: Int {
         case Default, Infinite
     }
     
@@ -62,7 +62,7 @@ public class PickerView: UIView {
                        You must have a selection indicator as a image and set it to the image view through the `selectionImageView` property.
     */
     
-    public enum SelectionStyle {
+    public enum SelectionStyle: Int {
         case None, DefaultIndicator, Overlay, Image
     }
     
