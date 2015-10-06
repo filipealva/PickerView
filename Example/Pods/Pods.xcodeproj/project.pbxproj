@@ -7,45 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BD8156B1194690AA4BDBD0222892E7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4A0668619CDF77BB70878BF5B2CBF4 /* Foundation.framework */; };
-		8D5111DED2CC5C33C4FE450C0E9B5A8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4A0668619CDF77BB70878BF5B2CBF4 /* Foundation.framework */; };
-		97B32E25791553C58A14039271A6C23D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4A0668619CDF77BB70878BF5B2CBF4 /* Foundation.framework */; };
-		9825641B6D532F75C049565427D89C79 /* PickerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842CFDE9DE727B165F6B94DA6A4EFD /* PickerView-dummy.m */; };
+		04913B94CA3F1370D99226AF0B061C5E /* PickerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F62234791C058FC41C3CF579812439EF /* PickerView-dummy.m */; };
+		2BD8156B1194690AA4BDBD0222892E7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E821DCA1ECA5EF43C052F40CD6ED7F8B /* Foundation.framework */; };
+		644C9BC34C95CFC9214532750F6E2C35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E821DCA1ECA5EF43C052F40CD6ED7F8B /* Foundation.framework */; };
+		6706B73DA81929AD015C53CD665B5259 /* PickerView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73F93BB5B52D3FFD335CA468A02990A9 /* PickerView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8BD9C14E79A2BCD2586F3EF44A6D2AA1 /* PickerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B4405F8B106B49B92C3FA80888534CDB /* PickerView.bundle */; };
+		8D5111DED2CC5C33C4FE450C0E9B5A8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E821DCA1ECA5EF43C052F40CD6ED7F8B /* Foundation.framework */; };
 		9AA00C7D746189DB6BA13C647FC6ADFF /* Pods-PickerView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D3033A4C85C2DBC83019A55A242177 /* Pods-PickerView_Example-dummy.m */; };
 		ABC6CF83EE000234175B70423F6DA4EA /* Pods-PickerView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C8E6595C29BF7F6F0166B50917D2C5 /* Pods-PickerView_Tests-dummy.m */; };
 		B5038A5EECB3BF3B2BB67BBE3443EBC7 /* Pods-PickerView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 445013FD7D2CD6AB3D532A8167DD08B1 /* Pods-PickerView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C5EC07013A8C446EAE155416B517F52D /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A046C1DE4984221D42B35407E6493B /* PickerView.swift */; };
-		D3429D59DA9A5D3ECBC9AC37B720A8BF /* PickerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4426BA9831CEBF0FB5FE6B69EA6C9859 /* PickerView.bundle */; };
+		ED22C334B8782B25F110C932CF525324 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9D6E433268715F392A60CC2CA1CA3 /* PickerView.swift */; };
 		F1E66D8CA7719977B434815A9F7F06E2 /* Pods-PickerView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EFD523D74D565450BB672427F3CCD0BB /* Pods-PickerView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F93BC6D2B12C67BD3A75FBFEAED7C4CE /* PickerView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 43CE7EA1BEE5E53D15CB2863C9026822 /* PickerView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		15839C5320F79583CE061525F8EF5380 /* PBXContainerItemProxy */ = {
+		40696CD58F5D94D75C81319AABCBF382 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0B4E2F7CDC1D739D6062075CEF2513B2;
+			remoteGlobalIDString = BBE0238E3D21E3689E7E984AFBFD5CF1;
 			remoteInfo = PickerView;
 		};
-		3EA45D24F54B1BD8FD61381B7A1467B5 /* PBXContainerItemProxy */ = {
+		CDE7732554D30EF5A41A320CBD7077B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4FC4D269351A784596B3E1290E07022D;
+			remoteGlobalIDString = BBE0238E3D21E3689E7E984AFBFD5CF1;
+			remoteInfo = PickerView;
+		};
+		F43F6C91E27FFB4CCF18B12D390D404D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C078FF1A20D3559BAFA38967561DA1D9;
 			remoteInfo = "PickerView-PickerView";
-		};
-		AFEACD82A536A2298CF9F3F967B98915 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0B4E2F7CDC1D739D6062075CEF2513B2;
-			remoteInfo = PickerView;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02A046C1DE4984221D42B35407E6493B /* PickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		07C8E6595C29BF7F6F0166B50917D2C5 /* Pods-PickerView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PickerView_Tests-dummy.m"; sourceTree = "<group>"; };
 		082491C719C084F51F46E693919B56B5 /* PickerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PickerView.modulemap; sourceTree = "<group>"; };
 		0C500A301A815C61CF274F9A20EA017C /* Pods-PickerView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PickerView_Tests.modulemap"; sourceTree = "<group>"; };
@@ -54,40 +53,34 @@
 		285DB5D1DEA9F166AD42758563BB09AF /* Pods-PickerView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PickerView_Example-resources.sh"; sourceTree = "<group>"; };
 		31090C371E85F697238F08826DB7511F /* Pods-PickerView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PickerView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		3765705F41A7A9234FCC1E5E7BB80546 /* Pods-PickerView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PickerView_Tests-resources.sh"; sourceTree = "<group>"; };
-		43CE7EA1BEE5E53D15CB2863C9026822 /* PickerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PickerView-umbrella.h"; sourceTree = "<group>"; };
-		4426BA9831CEBF0FB5FE6B69EA6C9859 /* PickerView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickerView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		40931BC0943A69482F18B8A8243B51DB /* PickerView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PickerView.xcconfig; sourceTree = "<group>"; };
 		445013FD7D2CD6AB3D532A8167DD08B1 /* Pods-PickerView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PickerView_Example-umbrella.h"; sourceTree = "<group>"; };
 		4C55071A143648E9A988EBABE3140B06 /* Pods-PickerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PickerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		51A35D829CDB42A61392531717E46D62 /* Pods-PickerView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PickerView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		51CEC328828AAB80900E85F3B90E399C /* Pods-PickerView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PickerView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		5AE056E6FCD01BB3D53F83A285976A8A /* PickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		604E28C0BDFF37E82CCCE9CF1581FFE4 /* Pods-PickerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PickerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6AD51542CF9806D49321A4EE7DD2F082 /* Pods-PickerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PickerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		6D4A0668619CDF77BB70878BF5B2CBF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7C842CFDE9DE727B165F6B94DA6A4EFD /* PickerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PickerView-dummy.m"; sourceTree = "<group>"; };
+		73F93BB5B52D3FFD335CA468A02990A9 /* PickerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PickerView-umbrella.h"; sourceTree = "<group>"; };
 		7EA0B12E161625FB354CCE9D5387FD68 /* Pods-PickerView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PickerView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		80C5A1107CAC6713FD05335C588377AD /* Pods_PickerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickerView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8167D7AD829C04302884BE23E8D33A68 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4405F8B106B49B92C3FA80888534CDB /* PickerView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickerView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72C2B845E1B1D7772A4CFB8B3B7ABC6 /* Pods-PickerView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PickerView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C41C4E0F7BF3F5BEA3CF79C5E552A88D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B9D6E433268715F392A60CC2CA1CA3 /* PickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		DA02939CBB78309E7B0E0897B7FD6A6E /* Pods_PickerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickerView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2A66D7B86A84F42E3B75D4B9AFA3183 /* PickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E52AC7C950652EDAB05E3CBA6C5DA536 /* PickerView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PickerView.xcconfig; sourceTree = "<group>"; };
+		E821DCA1ECA5EF43C052F40CD6ED7F8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EB82A7B0E938267A728364CAA38BE2CD /* PickerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PickerView-prefix.pch"; sourceTree = "<group>"; };
 		EFD523D74D565450BB672427F3CCD0BB /* Pods-PickerView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PickerView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		F1D2D1E70E95CAF59F92A7ED8C602A3D /* Pods-PickerView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PickerView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F21C20E5CE00801B630107E2F58BB22E /* Pods-PickerView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PickerView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F62234791C058FC41C3CF579812439EF /* PickerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PickerView-dummy.m"; sourceTree = "<group>"; };
 		F8D3033A4C85C2DBC83019A55A242177 /* Pods-PickerView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PickerView_Example-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0FCC3D09A00492BC941C2631690C1786 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		49ED33802448E12B858CF58360EC53E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,11 +97,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D49E2BC07C14EA0A71F95C651B270D68 /* Frameworks */ = {
+		5FCA3BD8A29767E14B0FEBB33CCAFCB7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97B32E25791553C58A14039271A6C23D /* Foundation.framework in Frameworks */,
+				644C9BC34C95CFC9214532750F6E2C35 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A58A1D80BA946D9C709245B969B0B007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				6D4A0668619CDF77BB70878BF5B2CBF4 /* Foundation.framework */,
+				E821DCA1ECA5EF43C052F40CD6ED7F8B /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -146,10 +146,10 @@
 			children = (
 				8167D7AD829C04302884BE23E8D33A68 /* Info.plist */,
 				082491C719C084F51F46E693919B56B5 /* PickerView.modulemap */,
-				E52AC7C950652EDAB05E3CBA6C5DA536 /* PickerView.xcconfig */,
-				7C842CFDE9DE727B165F6B94DA6A4EFD /* PickerView-dummy.m */,
+				40931BC0943A69482F18B8A8243B51DB /* PickerView.xcconfig */,
+				F62234791C058FC41C3CF579812439EF /* PickerView-dummy.m */,
 				EB82A7B0E938267A728364CAA38BE2CD /* PickerView-prefix.pch */,
-				43CE7EA1BEE5E53D15CB2863C9026822 /* PickerView-umbrella.h */,
+				73F93BB5B52D3FFD335CA468A02990A9 /* PickerView-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/PickerView";
@@ -186,7 +186,7 @@
 		A59704706F284CB91D54EAEEC8097903 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				02A046C1DE4984221D42B35407E6493B /* PickerView.swift */,
+				D2B9D6E433268715F392A60CC2CA1CA3 /* PickerView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -220,8 +220,8 @@
 		CFEEB07DD65782C005DD2B8423220876 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4426BA9831CEBF0FB5FE6B69EA6C9859 /* PickerView.bundle */,
-				E2A66D7B86A84F42E3B75D4B9AFA3183 /* PickerView.framework */,
+				B4405F8B106B49B92C3FA80888534CDB /* PickerView.bundle */,
+				5AE056E6FCD01BB3D53F83A285976A8A /* PickerView.framework */,
 				DA02939CBB78309E7B0E0897B7FD6A6E /* Pods_PickerView_Example.framework */,
 				80C5A1107CAC6713FD05335C588377AD /* Pods_PickerView_Tests.framework */,
 			);
@@ -257,14 +257,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8659D74CF68B5C1EE70A1E1D81F00F17 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F93BC6D2B12C67BD3A75FBFEAED7C4CE /* PickerView-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		91CE228CAE7F5CEA63977EF59A710AED /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,28 +265,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2C303B25F4779E66A75D17DFE607C93 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6706B73DA81929AD015C53CD665B5259 /* PickerView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0B4E2F7CDC1D739D6062075CEF2513B2 /* PickerView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 42284E2562D101E11CC13F635349B8FD /* Build configuration list for PBXNativeTarget "PickerView" */;
-			buildPhases = (
-				B19EF3A7F4EBF757240048D0F2E95034 /* Sources */,
-				D49E2BC07C14EA0A71F95C651B270D68 /* Frameworks */,
-				33A6BFB9383C257DD0D5CCEC405EF9B9 /* Resources */,
-				8659D74CF68B5C1EE70A1E1D81F00F17 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9E934C8D2682A23721579D5BA7085DD9 /* PBXTargetDependency */,
-			);
-			name = PickerView;
-			productName = PickerView;
-			productReference = E2A66D7B86A84F42E3B75D4B9AFA3183 /* PickerView.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		230F795B8C6924A7D49CCD28FEC33FA2 /* Pods-PickerView_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 839EC7D8D30A2BD3DC01E901A84E3CE9 /* Build configuration list for PBXNativeTarget "Pods-PickerView_Tests" */;
@@ -306,7 +287,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				689E8E45302FEB221760C130D9796836 /* PBXTargetDependency */,
+				C1C3C716721F1251264A64D114D440A4 /* PBXTargetDependency */,
 			);
 			name = "Pods-PickerView_Tests";
 			productName = "Pods-PickerView_Tests";
@@ -324,20 +305,39 @@
 			buildRules = (
 			);
 			dependencies = (
-				A27FD818013B2A8881E87A4A2D8A5116 /* PBXTargetDependency */,
+				8E680EA309FCF3EBC610F51913F2E330 /* PBXTargetDependency */,
 			);
 			name = "Pods-PickerView_Example";
 			productName = "Pods-PickerView_Example";
 			productReference = DA02939CBB78309E7B0E0897B7FD6A6E /* Pods_PickerView_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4FC4D269351A784596B3E1290E07022D /* PickerView-PickerView */ = {
+		BBE0238E3D21E3689E7E984AFBFD5CF1 /* PickerView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC7AE60ADEEEC0D9D924BD62FB34AD44 /* Build configuration list for PBXNativeTarget "PickerView-PickerView" */;
+			buildConfigurationList = F98CE75D9A6B9C553A64FE830672C25A /* Build configuration list for PBXNativeTarget "PickerView" */;
 			buildPhases = (
-				962BA8C1B0DE7C103EC103E2D9515ED6 /* Sources */,
-				0FCC3D09A00492BC941C2631690C1786 /* Frameworks */,
-				705B3B875050EF38E6A8F10E75E3B419 /* Resources */,
+				7915C5316DC766196C7235D690A376B2 /* Sources */,
+				5FCA3BD8A29767E14B0FEBB33CCAFCB7 /* Frameworks */,
+				38E1FC1E9AB32082E19E12FD5607F0E7 /* Resources */,
+				A2C303B25F4779E66A75D17DFE607C93 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFF5C4571462BE4C6F098EB3DFC1144C /* PBXTargetDependency */,
+			);
+			name = PickerView;
+			productName = PickerView;
+			productReference = 5AE056E6FCD01BB3D53F83A285976A8A /* PickerView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C078FF1A20D3559BAFA38967561DA1D9 /* PickerView-PickerView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82643E5B328E1C30E7469DF71C9E8D91 /* Build configuration list for PBXNativeTarget "PickerView-PickerView" */;
+			buildPhases = (
+				44C1403B45B0E575AE7776416A91BCB9 /* Sources */,
+				A58A1D80BA946D9C709245B969B0B007 /* Frameworks */,
+				E4BD02D55A2180B51B389744595805B8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -345,7 +345,7 @@
 			);
 			name = "PickerView-PickerView";
 			productName = "PickerView-PickerView";
-			productReference = 4426BA9831CEBF0FB5FE6B69EA6C9859 /* PickerView.bundle */;
+			productReference = B4405F8B106B49B92C3FA80888534CDB /* PickerView.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -369,8 +369,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0B4E2F7CDC1D739D6062075CEF2513B2 /* PickerView */,
-				4FC4D269351A784596B3E1290E07022D /* PickerView-PickerView */,
+				BBE0238E3D21E3689E7E984AFBFD5CF1 /* PickerView */,
+				C078FF1A20D3559BAFA38967561DA1D9 /* PickerView-PickerView */,
 				3410F66971FEEBE8D59E9FFAB531FB15 /* Pods-PickerView_Example */,
 				230F795B8C6924A7D49CCD28FEC33FA2 /* Pods-PickerView_Tests */,
 			);
@@ -378,15 +378,15 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		33A6BFB9383C257DD0D5CCEC405EF9B9 /* Resources */ = {
+		38E1FC1E9AB32082E19E12FD5607F0E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3429D59DA9A5D3ECBC9AC37B720A8BF /* PickerView.bundle in Resources */,
+				8BD9C14E79A2BCD2586F3EF44A6D2AA1 /* PickerView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		705B3B875050EF38E6A8F10E75E3B419 /* Resources */ = {
+		E4BD02D55A2180B51B389744595805B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -404,19 +404,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		962BA8C1B0DE7C103EC103E2D9515ED6 /* Sources */ = {
+		44C1403B45B0E575AE7776416A91BCB9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B19EF3A7F4EBF757240048D0F2E95034 /* Sources */ = {
+		7915C5316DC766196C7235D690A376B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9825641B6D532F75C049565427D89C79 /* PickerView-dummy.m in Sources */,
-				C5EC07013A8C446EAE155416B517F52D /* PickerView.swift in Sources */,
+				04913B94CA3F1370D99226AF0B061C5E /* PickerView-dummy.m in Sources */,
+				ED22C334B8782B25F110C932CF525324 /* PickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,54 +431,50 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		689E8E45302FEB221760C130D9796836 /* PBXTargetDependency */ = {
+		8E680EA309FCF3EBC610F51913F2E330 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PickerView;
-			target = 0B4E2F7CDC1D739D6062075CEF2513B2 /* PickerView */;
-			targetProxy = 15839C5320F79583CE061525F8EF5380 /* PBXContainerItemProxy */;
+			target = BBE0238E3D21E3689E7E984AFBFD5CF1 /* PickerView */;
+			targetProxy = CDE7732554D30EF5A41A320CBD7077B1 /* PBXContainerItemProxy */;
 		};
-		9E934C8D2682A23721579D5BA7085DD9 /* PBXTargetDependency */ = {
+		C1C3C716721F1251264A64D114D440A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PickerView;
+			target = BBE0238E3D21E3689E7E984AFBFD5CF1 /* PickerView */;
+			targetProxy = 40696CD58F5D94D75C81319AABCBF382 /* PBXContainerItemProxy */;
+		};
+		EFF5C4571462BE4C6F098EB3DFC1144C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "PickerView-PickerView";
-			target = 4FC4D269351A784596B3E1290E07022D /* PickerView-PickerView */;
-			targetProxy = 3EA45D24F54B1BD8FD61381B7A1467B5 /* PBXContainerItemProxy */;
-		};
-		A27FD818013B2A8881E87A4A2D8A5116 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PickerView;
-			target = 0B4E2F7CDC1D739D6062075CEF2513B2 /* PickerView */;
-			targetProxy = AFEACD82A536A2298CF9F3F967B98915 /* PBXContainerItemProxy */;
+			target = C078FF1A20D3559BAFA38967561DA1D9 /* PickerView-PickerView */;
+			targetProxy = F43F6C91E27FFB4CCF18B12D390D404D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0FE61CA7FB06F71F4D6CD3204CE5115B /* Debug */ = {
+		01B856F282D1222A8CD5BEC1834CBFC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E52AC7C950652EDAB05E3CBA6C5DA536 /* PickerView.xcconfig */;
+			baseConfigurationReference = 40931BC0943A69482F18B8A8243B51DB /* PickerView.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PickerView/PickerView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PickerView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PickerView/PickerView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = PickerView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
+		};
+		050E1B6199EF1CC2D0B695D1B9D0FD20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40931BC0943A69482F18B8A8243B51DB /* PickerView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = PickerView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 		36F700CA93E6C831BDB0722A99958E41 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -501,33 +497,6 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = Pods_PickerView_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6E4C2FB6C446EA277DBAD62276F6EF96 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E52AC7C950652EDAB05E3CBA6C5DA536 /* PickerView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PickerView/PickerView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PickerView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PickerView/PickerView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = PickerView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -635,27 +604,31 @@
 			};
 			name = Debug;
 		};
-		C435BD4CBAE3E7DE1F877DE00B4882B9 /* Release */ = {
+		BDA725445563DB50B71F4F5345593192 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E52AC7C950652EDAB05E3CBA6C5DA536 /* PickerView.xcconfig */;
+			baseConfigurationReference = 40931BC0943A69482F18B8A8243B51DB /* PickerView.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.1.0;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PickerView/PickerView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PickerView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PickerView/PickerView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = PickerView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		EDA27EBA0823BFD022FD1B1DADCF002A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E52AC7C950652EDAB05E3CBA6C5DA536 /* PickerView.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = PickerView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -690,6 +663,33 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE5EDA46A64394A278AC5D14305AF4BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40931BC0943A69482F18B8A8243B51DB /* PickerView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.1.0;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PickerView/PickerView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PickerView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PickerView/PickerView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PickerView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -734,11 +734,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		42284E2562D101E11CC13F635349B8FD /* Build configuration list for PBXNativeTarget "PickerView" */ = {
+		82643E5B328E1C30E7469DF71C9E8D91 /* Build configuration list for PBXNativeTarget "PickerView-PickerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0FE61CA7FB06F71F4D6CD3204CE5115B /* Debug */,
-				6E4C2FB6C446EA277DBAD62276F6EF96 /* Release */,
+				01B856F282D1222A8CD5BEC1834CBFC4 /* Debug */,
+				050E1B6199EF1CC2D0B695D1B9D0FD20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -752,11 +752,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC7AE60ADEEEC0D9D924BD62FB34AD44 /* Build configuration list for PBXNativeTarget "PickerView-PickerView" */ = {
+		F98CE75D9A6B9C553A64FE830672C25A /* Build configuration list for PBXNativeTarget "PickerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDA27EBA0823BFD022FD1B1DADCF002A /* Debug */,
-				C435BD4CBAE3E7DE1F877DE00B4882B9 /* Release */,
+				BDA725445563DB50B71F4F5345593192 /* Debug */,
+				FE5EDA46A64394A278AC5D14305AF4BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

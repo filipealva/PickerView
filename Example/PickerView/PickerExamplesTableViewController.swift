@@ -31,7 +31,6 @@ class PickerExamplesTableViewController: UITableViewController {
                 self.pickedNumber = newSelectedValue
                 self.tableView.reloadData()
             }
-
         }
         
         if segue.identifier == "showNamePicker" {
@@ -65,9 +64,9 @@ extension PickerExamplesTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 1:
-            performSegueWithIdentifier("showNumberPicker", sender: self)
+            performSegueWithIdentifier("showNumberPicker", sender: nil)
         case 2:
-            performSegueWithIdentifier("showNamePicker", sender: self)
+            performSegueWithIdentifier("showNamePicker", sender: nil)
         default:
             break
         }
