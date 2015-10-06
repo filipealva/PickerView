@@ -410,8 +410,11 @@ public class PickerView: UIView {
                 nearbyToMiddleIndexForRow = middleIndex - (numberOfRowsByDataSource - row)
             }
             
+            // This line adjust the contentInset to UIEdgeInsetZero because when the PickerView are inside of a UIViewController 
+            // presented by a UINavigation controller, the tableView contentInset is affected.
             tableView.contentInset = UIEdgeInsetsZero
 
+            // TODO: INVESTIGATE THE NEEDS OF THIS AMOUT OF CODE
             switch (numberOfRowsByDataSource, tableView.numberOfRowsInSection(0), nearbyToMiddleIndexForRow, scrollingStyle) {
             case (_, _, _, .Infinite) where numberOfRowsByDataSource > 0 && tableView.numberOfRowsInSection(0) > 0 && nearbyToMiddleIndexForRow > 0:
                 tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(nearbyToMiddleIndexForRow) * rowHeight), animated: false)
@@ -471,11 +474,12 @@ extension PickerView: UITableViewDataSource {
         pickerViewCell.titleLabel.backgroundColor = UIColor.clearColor()
         pickerViewCell.titleLabel.text = dataSource?.pickerView(self, titleForRow: indexPath.row % numberOfRowsByDataSource)
         
+        // TODO: TRY TO MOVE TO A METHOD
         let currentSelectedCellMultiplier = scrollingStyle == .Infinite ? (infinityRowsMultiplier / 2) : infinityRowsMultiplier
         let middleIndex = numberOfRowsByDataSource * currentSelectedCellMultiplier
         
         let nearbyToMiddleIndexForRow: Int!
-
+        
         if scrollingStyle == .Default && currentSelectedRow == 0 {
             nearbyToMiddleIndexForRow = 0
         } else {
