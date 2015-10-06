@@ -21,7 +21,7 @@ pod "PickerView"
 
 ## Author
 
-filipealva, ofilipealvarenga@gmail.com
+[@filipealva](https://twitter.com/filipealva)
 
 ## License
 
