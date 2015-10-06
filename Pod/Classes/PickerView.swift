@@ -80,6 +80,7 @@ public class PickerView: UIView {
     
     private var selectionOverlayH: NSLayoutConstraint!
     private var selectionImageH: NSLayoutConstraint!
+    private var selectionIndicatorB: NSLayoutConstraint!
     private var pickerCellBackgroundColor: UIColor?
     
     var numberOfRowsByDataSource: Int {
@@ -314,19 +315,19 @@ public class PickerView: UIView {
         addConstraint(selectionIndicatorH)
         
         let selectionIndicatorW = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Width, relatedBy: .Equal,
-                                                        toItem: self.selectionOverlay, attribute: .Width, multiplier: 1, constant: 0)
+                                                        toItem: self, attribute: .Width, multiplier: 1, constant: 0)
         addConstraint(selectionIndicatorW)
         
         let selectionIndicatorL = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Leading, relatedBy: .Equal,
-                                                        toItem: self.selectionOverlay, attribute: .Leading, multiplier: 1, constant: 0)
+                                                        toItem: self, attribute: .Leading, multiplier: 1, constant: 0)
         addConstraint(selectionIndicatorL)
         
-        let selectionIndicatorB = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Bottom, relatedBy: .Equal,
-                                                        toItem: self.selectionOverlay, attribute: .Bottom, multiplier: 1, constant: 0)
+        selectionIndicatorB = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Bottom, relatedBy: .Equal,
+                                                    toItem: self, attribute: .CenterY, multiplier: 1, constant: (rowHeight / 2))
         addConstraint(selectionIndicatorB)
         
         let selectionIndicatorT = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Trailing, relatedBy: .Equal,
-                                                        toItem: self.selectionOverlay, attribute: .Trailing, multiplier: 1, constant: 0)
+                                                        toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
         addConstraint(selectionIndicatorT)
     }
     
@@ -371,9 +372,10 @@ public class PickerView: UIView {
     }
     
     private func adjustSelectionOverlayHeightConstraint() {
-        if selectionOverlayH.constant != rowHeight || selectionImageH.constant != rowHeight {
+        if selectionOverlayH.constant != rowHeight || selectionImageH.constant != rowHeight || selectionIndicatorB.constant != (rowHeight / 2) {
             selectionOverlayH.constant = rowHeight
             selectionImageH.constant = rowHeight
+            selectionIndicatorB.constant = -(rowHeight / 2)
             layoutIfNeeded()
         }
     }
