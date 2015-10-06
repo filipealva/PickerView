@@ -437,8 +437,10 @@ public class PickerView: UIView {
         delegate?.pickerView(self, didSelectRow: row % numberOfRowsByDataSource)
     }
     
+    /**
+        Configure the first row selection: If some pre-selected row was set, we select it, else we select the nearby to middle at all.
+    */
     private func configureFirstSelection() {
-        // Configure the first row selection: If some pre-selected row was set, we select it, else we select the nearby to middle at all.
         let rowToSelect = currentSelectedRow != nil ? currentSelectedRow : Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
         selectedNearbyToMiddleRow(rowToSelect)
     }
