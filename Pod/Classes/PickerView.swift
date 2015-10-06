@@ -25,7 +25,7 @@ public class PickerView: UIView {
     
     // MARK: Nested Types
     
-    class SimplePickerTableViewCell: UITableViewCell {
+    private class SimplePickerTableViewCell: UITableViewCell {
         lazy var titleLabel: UILabel = {
             let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: self.contentView.frame.width, height: self.contentView.frame.height))
             
@@ -78,9 +78,9 @@ public class PickerView: UIView {
         }
     }
     
-    var selectionOverlayH: NSLayoutConstraint!
-    var selectionImageH: NSLayoutConstraint!
-    var pickerCellBackgroundColor: UIColor?
+    private var selectionOverlayH: NSLayoutConstraint!
+    private var selectionImageH: NSLayoutConstraint!
+    private var pickerCellBackgroundColor: UIColor?
     
     var numberOfRowsByDataSource: Int {
         get {
@@ -101,7 +101,7 @@ public class PickerView: UIView {
         }
     }
     
-    let pickerViewCellIdentifier = "pickerViewCell"
+    private let pickerViewCellIdentifier = "pickerViewCell"
     
     public var dataSource: PickerViewDataSource?
     public var delegate: PickerViewDelegate?
@@ -135,13 +135,13 @@ public class PickerView: UIView {
         return tableView
     }()
     
-    var infinityRowsMultiplier: Int = 1
+    private var infinityRowsMultiplier: Int = 1
     public var currentSelectedRow: Int = 0
     
-    var firstTimeOrientationChanged = true
-    var orientationChanged = false
-    var isScrolling = false
-    var setupHasBeenDone = false
+    private var firstTimeOrientationChanged = true
+    private var orientationChanged = false
+    private var isScrolling = false
+    private var setupHasBeenDone = false
     
     public var scrollingStyle = ScrollingStyle.Default {
         didSet {
@@ -189,7 +189,7 @@ public class PickerView: UIView {
     
     // MARK: Subviews Setup
     
-    func setup() {
+    private func setup() {
         infinityRowsMultiplier = generateInfinityRowsMultiplier()
         
         // Setup subviews constraints and apperance
@@ -200,7 +200,7 @@ public class PickerView: UIView {
         setupDefaultSelectionIndicator()
         
         // Setup UITableView data source & delegate in background
-        // Reason: When FAPickerView scrollingStyle is set to .Infinite and the data source is huge, setting UITableView data source & delegate
+        // Reason: When PickerView scrollingStyle is set to .Infinite and the data source is huge, setting UITableView data source & delegate
         // on main queue can causes a little delay in the transition animation (push or modal animation)
         let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -375,7 +375,7 @@ public class PickerView: UIView {
         }
     }
     
-    func adjustCurrentSelectedAfterOrientationChanges() {
+    internal func adjustCurrentSelectedAfterOrientationChanges() {
         setNeedsLayout()
         layoutIfNeeded()
         selectedNearbyToMiddleRow(currentSelectedRow)
