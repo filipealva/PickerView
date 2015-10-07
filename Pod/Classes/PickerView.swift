@@ -380,7 +380,7 @@ public class PickerView: UIView {
         }
     }
     
-    internal func adjustCurrentSelectedAfterOrientationChanges() {
+    func adjustCurrentSelectedAfterOrientationChanges() {
         setNeedsLayout()
         layoutIfNeeded()
         
