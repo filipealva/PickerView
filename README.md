@@ -187,6 +187,8 @@ Just want to say `hello`? -> ofilipealvarenga at gmail.com
 
 Author: [@filipealva](https://twitter.com/filipealva) 
 
+See the people who helps to improve this project: [Contributors](https://github.com/filipealva/PickerView/graphs/contributors) ♥
+
 **Special thanks to**: [@bguidolim](https://twitter.com/bguidolim) and [@jairobjunior](https://github.com/jairobjunior).
 
 ## License
