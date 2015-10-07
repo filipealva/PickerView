@@ -26,7 +26,7 @@ Change the class to `PickerView` on the Identity Inspector **and make the** `@IB
 
 <p align="center"><img src="http://s30.postimg.org/koz421nk1/Captura_de_Tela_2015_10_07_s_13_15_06.png" border="0" alt="Change the custom class." height="200px" width="214px"/></p>
 
-## From Code
+### From Code
 
 Create a new `PickerView`.
 
@@ -40,6 +40,18 @@ Add to your view and put your custom constraints.
 ```swift
 view.addSubview(examplePicker)
 view.addConstraints([yourCustomConstraints])
+```
+
+### Set the `PickerViewDataSource` and `PickerViewDelegate`
+
+Don't forget to set the datasource and delegate of your `PickerView`:
+
+```swift
+// ...
+// The `examplePicker` below is the same that you created through code or connected via @IBOutlet
+examplePicker.dataSource = self
+examplePicker.delegate = self
+// ...
 ```
 
 ### Implement `PickerViewDataSource`
@@ -69,6 +81,8 @@ func pickerView(pickerView: PickerView, titleForRow row: Int) -> String {
     return item.name 
 }
 ```
+
+Done. Now you'll need to implement one more protocol and then we are all set.
 
 ### Implement `PickerViewDelegate`
 
@@ -119,6 +133,8 @@ func styleForLabel(label: UILabel, inPickerView pickerView: PickerView) {
     label.textColor = view.tintColor // Change the text color
 }
 ```
+
+Cool! You are ready to build and run your application with `PickerView`, it ill works with the default configurations and the text appearance you provided in `PickerViewDelegate` on the next section we will cover the scrolling and selection style customizations.
 
 ## Requirements
 
