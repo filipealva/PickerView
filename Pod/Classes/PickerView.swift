@@ -114,8 +114,8 @@ public class PickerView: UIView {
     
     override public var backgroundColor: UIColor? {
         didSet {
-            self.tableView.backgroundColor = self.backgroundColor
-            self.pickerCellBackgroundColor = self.backgroundColor
+            tableView.backgroundColor = backgroundColor
+            pickerCellBackgroundColor = backgroundColor
         }
     }
     
@@ -242,35 +242,35 @@ public class PickerView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         tableView.scrollsToTop = false
-        tableView.registerClass(SimplePickerTableViewCell.classForCoder(), forCellReuseIdentifier: self.pickerViewCellIdentifier)
+        tableView.registerClass(SimplePickerTableViewCell.classForCoder(), forCellReuseIdentifier: pickerViewCellIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(tableView)
         
-        self.addConstains(tableView, attributes: [.Height, .Width, .Leading, .Top, .Bottom,  .Trailing ])
+        addSelfRelatedConstraintsOfItem(tableView, withAttributes: [.Height, .Width, .Leading, .Top, .Bottom,  .Trailing])
     }
     
     private func setupSelectionOverlay() {
         selectionOverlay.userInteractionEnabled = false
         selectionOverlay.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(selectionOverlay)
+        addSubview(selectionOverlay)
         
         selectionOverlayH = NSLayoutConstraint(item: selectionOverlay, attribute: .Height, relatedBy: .Equal, toItem: nil,
                                                 attribute: .NotAnAttribute, multiplier: 1, constant: rowHeight)
-        self.addConstraint(selectionOverlayH)
+        addConstraint(selectionOverlayH)
         
-        self.addConstains(selectionOverlay, attributes: [.Width, .Leading, .Trailing, .CenterY ])
+        addSelfRelatedConstraintsOfItem(selectionOverlay, withAttributes: [.Width, .Leading, .Trailing, .CenterY])
     }
     
     private func setupSelectionImageView() {
         selectionImageView.userInteractionEnabled = false
         selectionImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(selectionImageView)
+        addSubview(selectionImageView)
         
         selectionImageH = NSLayoutConstraint(item: selectionImageView, attribute: .Height, relatedBy: .Equal, toItem: nil,
                                                 attribute: .NotAnAttribute, multiplier: 1, constant: rowHeight)
-        self.addConstraint(selectionImageH)
+        addConstraint(selectionImageH)
         
-        self.addConstains(selectionImageView, attributes: [.Width, .Leading, .Trailing, .CenterY ])
+        addSelfRelatedConstraintsOfItem(selectionImageView, withAttributes: [.Width, .Leading, .Trailing, .CenterY])
     }
     
     private func setupDefaultSelectionIndicator() {
@@ -287,13 +287,13 @@ public class PickerView: UIView {
         addConstraint(selectionIndicatorB)
         
         
-        self.addConstains(defaultSelectionIndicator, attributes: [.Width, .Leading, .Trailing ])
+        addSelfRelatedConstraintsOfItem(defaultSelectionIndicator, withAttributes: [.Width, .Leading, .Trailing])
     }
     
-    private func addConstains(item:AnyObject, attributes:[NSLayoutAttribute]){
-        for att in attributes{
+    private func addSelfRelatedConstraintsOfItem(item: AnyObject, withAttributes attributes: [NSLayoutAttribute]) {
+        for att in attributes {
             let selectionIndicator = NSLayoutConstraint(item: item, attribute: att, relatedBy: .Equal,
-                toItem: self, attribute: att, multiplier: 1, constant: 0)
+                                                        toItem: self, attribute: att, multiplier: 1, constant: 0)
             addConstraint(selectionIndicator)
         }
     }
@@ -459,7 +459,7 @@ extension PickerView: UITableViewDataSource {
         
         // As the first row have a different size to fit in the middle of the PickerView and rows below, the titleLabel position must be adjusted.
         if indexPath.row == 0 {
-            let centerY = (self.frame.height / 2) - (rowHeight / 2)
+            let centerY = (frame.height / 2) - (rowHeight / 2)
             pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: centerY, width: frame.width, height: rowHeight)
         } else {
             pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: rowHeight)
