@@ -185,7 +185,7 @@ Just want to say `hello`? -> ofilipealvarenga at gmail.com
 
 Author: [@filipealva](https://twitter.com/filipealva) 
 
-Special thanks to: @bguidolim and [@jairobjunior](https://github.com/jairobjunior).
+**Special thanks to**: [@bguidolim](https://twitter.com/bguidolim) and [@jairobjunior](https://github.com/jairobjunior).
 
 ## License
 
