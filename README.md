@@ -8,6 +8,21 @@
 
 <p align="center"><img src ="https://github.com/filipealva/PickerView/raw/master/Demo.gif" /></p>
 
+## Requirements
+
+It requires Xcode 7.0+ and Swift 2.0.
+
+Your project deployment target must be `iOS 8.0+`
+
+## Installation
+
+PickerView is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "PickerView"
+```
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -161,21 +176,6 @@ Is defined by the `selectionStyle` property of `PickerView` that is of type `Sel
 *Tip: You can set the alpha to 1.0 and background color to .clearColor() and add your custom selection view as a `selectionOverlay` subview to make it looks as you want (don't forget to properly add the constraints related to `selectionOverlay` to keep your experience with any screen size).*
 
 **.Image**: Provide a full width and height image view selection indicator (the height you provided on delegate) without any image. You **must** have a selection indicator as a image and set it to the image view through the `selectionImageView` property.
-
-## Requirements
-
-It requires Xcode 7.0+ and Swift 2.0.
-
-Your project deployment target must be `iOS 8.0+`
-
-## Installation
-
-PickerView is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "PickerView"
-```
 
 ## Contribute
 
