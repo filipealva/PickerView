@@ -164,6 +164,8 @@ Is defined by the `selectionStyle` property of `PickerView` that is of type `Sel
 
 ## Requirements
 
+It requires Xcode 7.0+ and Swift 2.0.
+
 Your project deployment target must be `iOS 8.0+`
 
 ## Installation
