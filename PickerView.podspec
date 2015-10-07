@@ -17,7 +17,7 @@ s.summary          = "A customizable alternative to UIPickerView."
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 s.description      = <<-DESC
-Did you ever has been asked to create a custom UIPickerView? Or your dark-themed application needed a dark-themed UIPickerView? If so, you know how hard is to do that. Well, someday I received a custom UIPickerView design to implement, and I don't found any great pod to make my life easier, so I decided to create a new one, and here it is: PickerView was created to help you to implement a custom designed UIPickerView.
+PickerView is an easy to use and customize alternative to UIPickerView written in Swift. It was developed to provide a highly customizable experience, so you can implement your custom designed UIPickerView.
 DESC
 
 s.homepage         = "https://github.com/filipealva/PickerView"
