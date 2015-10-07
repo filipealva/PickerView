@@ -45,7 +45,7 @@ class ExamplePickerViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigationBar()
-        configureSpeedPicker()
+        configureExamplePicker()
     }
     
     // MARK: - Configure Subviews
@@ -56,7 +56,7 @@ class ExamplePickerViewController: UIViewController {
         navigationController?.navigationBar.translucent = true
     }
     
-    private func configureSpeedPicker() {
+    private func configureExamplePicker() {
         examplePicker.dataSource = self
         examplePicker.delegate = self
         
@@ -97,7 +97,7 @@ class ExamplePickerViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func setMaxSpeed(sender: UIBarButtonItem) {
+    @IBAction func setNewPickerValue(sender: UIBarButtonItem) {
         if let updateValue = updateSelectedValue, currentSelected = currentSelectedValue {
             updateValue(newSelectedValue: currentSelected)
         }

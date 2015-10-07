@@ -207,7 +207,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="7aP-gF-cwv">
                             <connections>
-                                <action selector="setMaxSpeed:" destination="nk5-7N-65T" id="e5I-Qh-eW5"/>
+                                <action selector="setNewPickerValue:" destination="nk5-7N-65T" id="mwD-Te-ymg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
