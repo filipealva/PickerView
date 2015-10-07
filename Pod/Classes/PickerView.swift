@@ -246,29 +246,7 @@ public class PickerView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(tableView)
         
-        let tableViewH = NSLayoutConstraint(item: tableView, attribute: .Height, relatedBy: .Equal, toItem: self,
-                                                attribute: .Height, multiplier: 1, constant: 0)
-        addConstraint(tableViewH)
-        
-        let tableViewW = NSLayoutConstraint(item: tableView, attribute: .Width, relatedBy: .Equal, toItem: self,
-                                                attribute: .Width, multiplier: 1, constant: 0)
-        addConstraint(tableViewW)
-        
-        let tableViewL = NSLayoutConstraint(item: tableView, attribute: .Leading, relatedBy: .Equal, toItem: self,
-                                                attribute: .Leading, multiplier: 1, constant: 0)
-        addConstraint(tableViewL)
-        
-        let tableViewTop = NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: self,
-                                                attribute: .Top, multiplier: 1, constant: 0)
-        addConstraint(tableViewTop)
-        
-        let tableViewBottom = NSLayoutConstraint(item: tableView, attribute: .Bottom, relatedBy: .Equal, toItem: self,
-                                                    attribute: .Bottom, multiplier: 1, constant: 0)
-        addConstraint(tableViewBottom)
-        
-        let tableViewT = NSLayoutConstraint(item: tableView, attribute: .Trailing, relatedBy: .Equal, toItem: self,
-                                                attribute: .Trailing, multiplier: 1, constant: 0)
-        addConstraint(tableViewT)
+        self.addConstains(tableView, attributes: [.Height, .Width, .Leading, .Top, .Bottom,  .Trailing ])
     }
     
     private func setupSelectionOverlay() {
@@ -280,21 +258,7 @@ public class PickerView: UIView {
                                                 attribute: .NotAnAttribute, multiplier: 1, constant: rowHeight)
         self.addConstraint(selectionOverlayH)
         
-        let selectionOverlayW = NSLayoutConstraint(item: selectionOverlay, attribute: .Width, relatedBy: .Equal, toItem: self,
-                                                    attribute: .Width, multiplier: 1, constant: 0)
-        addConstraint(selectionOverlayW)
-        
-        let selectionOverlayL = NSLayoutConstraint(item: selectionOverlay, attribute: .Leading, relatedBy: .Equal, toItem: self,
-                                                    attribute: .Leading, multiplier: 1, constant: 0)
-        addConstraint(selectionOverlayL)
-        
-        let selectionOverlayT = NSLayoutConstraint(item: selectionOverlay, attribute: .Trailing, relatedBy: .Equal, toItem: self,
-                                                    attribute: .Trailing, multiplier: 1, constant: 0)
-        addConstraint(selectionOverlayT)
-        
-        let selectionOverlayY = NSLayoutConstraint(item: selectionOverlay, attribute: .CenterY, relatedBy: .Equal, toItem: self,
-                                                    attribute: .CenterY, multiplier: 1, constant: 0)
-        addConstraint(selectionOverlayY)
+        self.addConstains(selectionOverlay, attributes: [.Width, .Leading, .Trailing, .CenterY ])
     }
     
     private func setupSelectionImageView() {
@@ -306,21 +270,7 @@ public class PickerView: UIView {
                                                 attribute: .NotAnAttribute, multiplier: 1, constant: rowHeight)
         self.addConstraint(selectionImageH)
         
-        let selectionImageW = NSLayoutConstraint(item: selectionImageView, attribute: .Width, relatedBy: .Equal, toItem: self,
-                                                    attribute: .Width, multiplier: 1, constant: 0)
-        addConstraint(selectionImageW)
-        
-        let selectionImageL = NSLayoutConstraint(item: selectionImageView, attribute: .Leading, relatedBy: .Equal, toItem: self,
-                                                    attribute: .Leading, multiplier: 1, constant: 0)
-        addConstraint(selectionImageL)
-        
-        let selectionImageT = NSLayoutConstraint(item: selectionImageView, attribute: .Trailing, relatedBy: .Equal, toItem: self,
-                                                    attribute: .Trailing, multiplier: 1, constant: 0)
-        addConstraint(selectionImageT)
-        
-        let selectionImageY = NSLayoutConstraint(item: selectionImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self,
-                                                    attribute: .CenterY, multiplier: 1, constant: 0)
-        addConstraint(selectionImageY)
+        self.addConstains(selectionImageView, attributes: [.Width, .Leading, .Trailing, .CenterY ])
     }
     
     private func setupDefaultSelectionIndicator() {
@@ -331,21 +281,21 @@ public class PickerView: UIView {
                                                         attribute: .NotAnAttribute, multiplier: 1, constant: 2.0)
         addConstraint(selectionIndicatorH)
         
-        let selectionIndicatorW = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Width, relatedBy: .Equal,
-                                                        toItem: self, attribute: .Width, multiplier: 1, constant: 0)
-        addConstraint(selectionIndicatorW)
-        
-        let selectionIndicatorL = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Leading, relatedBy: .Equal,
-                                                        toItem: self, attribute: .Leading, multiplier: 1, constant: 0)
-        addConstraint(selectionIndicatorL)
         
         selectionIndicatorB = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Bottom, relatedBy: .Equal,
                                                     toItem: self, attribute: .CenterY, multiplier: 1, constant: (rowHeight / 2))
         addConstraint(selectionIndicatorB)
         
-        let selectionIndicatorT = NSLayoutConstraint(item: defaultSelectionIndicator, attribute: .Trailing, relatedBy: .Equal,
-                                                        toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
-        addConstraint(selectionIndicatorT)
+        
+        self.addConstains(defaultSelectionIndicator, attributes: [.Width, .Leading, .Trailing ])
+    }
+    
+    private func addConstains(item:AnyObject, attributes:[NSLayoutAttribute]){
+        for att in attributes{
+            let selectionIndicator = NSLayoutConstraint(item: item, attribute: att, relatedBy: .Equal,
+                toItem: self, attribute: att, multiplier: 1, constant: 0)
+            addConstraint(selectionIndicator)
+        }
     }
     
     // MARK: Infinite Scrolling Helpers
