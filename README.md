@@ -181,6 +181,8 @@ Is defined by the `selectionStyle` property of `PickerView` that is of type `Sel
 
 Feel free to submit your pull request, suggest any update, report a bug or create a feature request. 
 
+Before you start contributing, please take a look on our [contributing guide](https://github.com/filipealva/PickerView/blob/master/CONTRIBUTING.md).
+
 Just want to say `hello`? -> ofilipealvarenga at gmail.com
 
 ## Contributors
