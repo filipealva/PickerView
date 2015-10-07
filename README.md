@@ -61,6 +61,65 @@ func numberOfRowsInPickerView(pickerView: PickerView) -> Int {
 }
 ```
 
+And the title for each row:
+
+```swift
+func pickerView(pickerView: PickerView, titleForRow row: Int) -> String {
+    let item = itemsThatYouWantToPresent[row] 
+    return item.name 
+}
+```
+
+### Implement `PickerViewDelegate`
+
+The `PickerViewDelegate` consists in four required methods:
+
+```swift
+public protocol PickerViewDelegate: class {
+    func pickerView(pickerView: PickerView, didSelectRow row: Int)
+    func heightForRowInPickerView(pickerView: PickerView) -> CGFloat
+    func styleForLabel(label: UILabel, inPickerView pickerView: PickerView)
+    func styleForHighlightedLabel(label: UILabel, inPickerView pickerView: PickerView)
+}
+```
+
+The first method is where you can do something with the row selected in `PickerView`:
+
+```swift
+func pickerView(pickerView: PickerView, didSelectRow row: Int) {
+    let selectedItem = itemsThatYouWantToPresent[row] 
+    print("The selected item is \(selectedItem.name)") 
+}
+```
+
+Then you must provide the `heightForRowInPickerView(_:)`:
+
+```swift
+func heightForRowInPickerView(pickerView: PickerView) -> CGFloat {
+    return 50.0 // In this example I'm returning arbitrary 50.0pt but you can return the row height you want.
+}
+```
+
+The following method allows you to customize the label that will present your items in `PickerView`:
+
+```swift
+func styleForLabel(label: UILabel, inPickerView pickerView: PickerView) {
+    label.textAlignment = .Center
+    label.font = UIFont.systemFontOfSize(15.0)
+    label.textColor = .lightGrayColor()
+}
+```
+
+And this method allows you to customize the label of highlighted row in `PickerView`:
+
+```swift
+func styleForLabel(label: UILabel, inPickerView pickerView: PickerView) {
+    label.textAlignment = .Center
+    label.font = UIFont.systemFontOfSize(25.0) // Change the size of font
+    label.textColor = view.tintColor // Change the text color
+}
+```
+
 ## Requirements
 
 Your project deployment target must be `iOS 8.0+`
