@@ -177,6 +177,10 @@ Is defined by the `selectionStyle` property of `PickerView` that is of type `Sel
 
 **.Image**: Provide a full width and height image view selection indicator (the height you provided on delegate) without any image. You **must** have a selection indicator as an image and set it to the image view through the `selectionImageView` property.
 
+## Who's Using It? 
+
+See what projects are using `PickerView` on [our wiki page](https://github.com/filipealva/PickerView/wiki).
+
 ## Contribute
 
 Feel free to submit your pull request, suggest any update, report a bug or create a feature request. 
