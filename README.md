@@ -175,7 +175,7 @@ Is defined by the `selectionStyle` property of `PickerView` that is of type `Sel
 
 *Tip: You can set the alpha to 1.0 and background color to .clearColor() and add your custom selection view as a `selectionOverlay` subview to make it looks as you want (don't forget to properly add the constraints related to `selectionOverlay` to keep your experience with any screen size).*
 
-**.Image**: Provide a full width and height image view selection indicator (the height you provided on delegate) without any image. You **must** have a selection indicator as a image and set it to the image view through the `selectionImageView` property.
+**.Image**: Provide a full width and height image view selection indicator (the height you provided on delegate) without any image. You **must** have a selection indicator as an image and set it to the image view through the `selectionImageView` property.
 
 ## Contribute
 
