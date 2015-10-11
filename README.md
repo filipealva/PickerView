@@ -16,12 +16,18 @@ Your project deployment target must be `iOS 8.0+`
 
 ## Installation
 
+### CocoaPods
+
 PickerView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod "PickerView"
 ```
+
+### Manually
+
+You can also install it manually just draging [PickerView](https://github.com/filipealva/PickerView/blob/master/Pod/Classes/PickerView.swift) file to your project. 
 
 ## Usage
 
