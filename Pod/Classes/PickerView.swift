@@ -27,16 +27,16 @@ import UIKit
 // MARK: - Protocols
 
 @objc public protocol PickerViewDataSource: class {
-    func numberOfRowsInPickerView(pickerView: PickerView) -> Int
-    func pickerView(pickerView: PickerView, titleForRow row:Int) -> String
+    func pickerViewNumberOfRows(pickerView: PickerView) -> Int
+    func pickerView(pickerView: PickerView, titleForRow row: Int, index: Int) -> String
 }
 
 @objc public protocol PickerViewDelegate: class {
-    optional func pickerView(pickerView: PickerView, didSelectRow row: Int)
-    func heightForRowInPickerView(pickerView: PickerView) -> CGFloat
-    optional func styleForLabel(label: UILabel, inPickerView pickerView: PickerView)
-    optional func styleForHighlightedLabel(label: UILabel, inPickerView pickerView: PickerView)
-    optional func pickerView(pickerView: PickerView, viewForRow row: Int, highlited: Bool, reusingView view: UIView?) -> UIView
+    func pickerViewHeightForRows(pickerView: PickerView) -> CGFloat
+    optional func pickerView(pickerView: PickerView, didSelectRow row: Int, index: Int)
+    optional func pickerView(pickerView: PickerView, didTapRow row: Int, index: Int)
+    optional func pickerView(pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool)
+    optional func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlited: Bool, reusingView view: UIView?) -> UIView
 }
 
 public class PickerView: UIView {
@@ -105,13 +105,13 @@ public class PickerView: UIView {
     
     var numberOfRowsByDataSource: Int {
         get {
-            return dataSource?.numberOfRowsInPickerView(self) ?? 0
+            return dataSource?.pickerViewNumberOfRows(self) ?? 0
         }
     }
     
     var rowHeight: CGFloat {
         get {
-            return delegate?.heightForRowInPickerView(self) ?? 0
+            return delegate?.pickerViewHeightForRows(self) ?? 0
         }
     }
     
@@ -160,7 +160,7 @@ public class PickerView: UIView {
     public var currentSelectedRow: Int!
     public var currentSelectedIndex: Int {
         get {
-            return currentSelectedRow % (numberOfRowsByDataSource > 0 ? numberOfRowsByDataSource : 1)
+            return indexForRow(currentSelectedRow)
         }
     }
     
@@ -430,6 +430,10 @@ public class PickerView: UIView {
         orientationChanged = true
     }
     
+    private func indexForRow(row: Int) -> Int {
+        return row % (numberOfRowsByDataSource > 0 ? numberOfRowsByDataSource : 1)
+    }
+    
     // MARK: - Actions
     
     /**
@@ -448,7 +452,9 @@ public class PickerView: UIView {
             
             let indexOfSelectedRow = visibleIndexOfSelectedRow()
             tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(indexOfSelectedRow) * rowHeight), animated: false)
-            delegate?.pickerView?(self, didSelectRow: row)
+            
+            delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
+            
         } while !(numberOfRowsByDataSource > 0 && tableView.numberOfRowsInSection(0) > 0)
     }
     
@@ -458,8 +464,8 @@ public class PickerView: UIView {
         - parameter row: The row index that the user tapped, i.e. the Data Source index times the `infinityRowsMultiplier`.
     */
     private func selectTappedRow(row: Int) {
+        delegate?.pickerView?(self, didTapRow: row, index: indexForRow(row))
         selectRow(row, animated: true)
-        delegate?.pickerView?(self, didSelectRow: row % numberOfRowsByDataSource)
     }
     
     /**
@@ -507,15 +513,14 @@ public class PickerView: UIView {
         var finalRow = row;
         
         if (scrollingStyle == .Infinite && row < numberOfRowsByDataSource) {
-            
             let selectedRow = currentSelectedRow ?? Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
-            
             let diff = (row % numberOfRowsByDataSource) - (selectedRow % numberOfRowsByDataSource)
-            
             finalRow = selectedRow + diff
         }
         
         currentSelectedRow = finalRow
+        
+        delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
         
         tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(finalRow) * rowHeight), animated: animated)
     }
@@ -536,33 +541,29 @@ extension PickerView: UITableViewDataSource {
         
         let pickerViewCell = tableView.dequeueReusableCellWithIdentifier(pickerViewCellIdentifier, forIndexPath: indexPath) as! SimplePickerTableViewCell
         
-        let view = delegate?.pickerView?(self, viewForRow: indexPath.row, highlited: indexPath.row == indexOfSelectedRow, reusingView: pickerViewCell.customView)
+        let view = delegate?.pickerView?(self, viewForRow: indexPath.row, index: indexForRow(indexPath.row), highlited: indexPath.row == indexOfSelectedRow, reusingView: pickerViewCell.customView)
         
         pickerViewCell.selectionStyle = .None
         pickerViewCell.backgroundColor = pickerCellBackgroundColor ?? UIColor.whiteColor()
         
         if (view != nil) {
+            var frame = view!.frame
+            frame.origin.y = indexPath.row == 0 ? (self.frame.height / 2) - (rowHeight / 2) : 0.0
+            view!.frame = frame
             pickerViewCell.customView = view
             pickerViewCell.contentView.addSubview(pickerViewCell.customView!)
             
         } else {
             // As the first row have a different size to fit in the middle of the PickerView and rows below, the titleLabel position must be adjusted.
-            if indexPath.row == 0 {
-                let centerY = (self.frame.height / 2) - (rowHeight / 2)
-                pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: centerY, width: frame.width, height: rowHeight)
-            } else {
-                pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: rowHeight)
-            }
+            let centerY = indexPath.row == 0 ? (self.frame.height / 2) - (rowHeight / 2) : 0.0
+            
+            pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: centerY, width: frame.width, height: rowHeight)
             
             pickerViewCell.contentView.addSubview(pickerViewCell.titleLabel)
             pickerViewCell.titleLabel.backgroundColor = UIColor.clearColor()
-            pickerViewCell.titleLabel.text = dataSource?.pickerView(self, titleForRow: indexPath.row % numberOfRowsByDataSource)
+            pickerViewCell.titleLabel.text = dataSource?.pickerView(self, titleForRow: indexPath.row, index: indexForRow(indexPath.row))
             
-            if indexPath.row == indexOfSelectedRow {
-                delegate?.styleForHighlightedLabel?(pickerViewCell.titleLabel, inPickerView: self)
-            } else {
-                delegate?.styleForLabel?(pickerViewCell.titleLabel, inPickerView: self)
-            }
+            delegate?.pickerView?(self, styleForLabel: pickerViewCell.titleLabel, highlighted: indexPath.row == indexOfSelectedRow)
         }
         
         return pickerViewCell
@@ -579,7 +580,7 @@ extension PickerView: UITableViewDelegate {
     }
     
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let numberOfRowsInPickerView = dataSource!.numberOfRowsInPickerView(self) * infinityRowsMultiplier
+        let numberOfRowsInPickerView = dataSource!.pickerViewNumberOfRows(self) * infinityRowsMultiplier
         
         // When the scrolling reach the end on top/bottom we need to set the first/last row to appear in the center of PickerView, so that row must be bigger.
         if indexPath.row == 0 {
@@ -612,8 +613,9 @@ extension PickerView: UIScrollViewDelegate {
         }
         
         // Update the currentSelectedRow and notify the delegate that we have a new selected row.
-        currentSelectedRow = roundedRow % numberOfRowsByDataSource
-        delegate?.pickerView?(self, didSelectRow: roundedRow % dataSource!.numberOfRowsInPickerView(self))
+        currentSelectedRow = roundedRow
+        
+        delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
     }
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -634,16 +636,16 @@ extension PickerView: UIScrollViewDelegate {
         if let visibleRows = tableView.indexPathsForVisibleRows {
             for indexPath in visibleRows {
                 if let cellToUnhighlight = tableView.cellForRowAtIndexPath(indexPath) as? SimplePickerTableViewCell where indexPath.row != roundedRow {
-                    delegate?.pickerView?(self, viewForRow: indexPath.row, highlited: false, reusingView: cellToUnhighlight.customView)
-                    delegate?.styleForLabel?(cellToUnhighlight.titleLabel, inPickerView: self)
+                    delegate?.pickerView?(self, viewForRow: indexPath.row, index: indexForRow(indexPath.row), highlited: false, reusingView: cellToUnhighlight.customView)
+                    delegate?.pickerView?(self, styleForLabel: cellToUnhighlight.titleLabel, highlighted: false)
                 }
             }
         }
         
         // Highlight the current selected cell during scroll
         if let cellToHighlight = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: roundedRow, inSection: 0)) as? SimplePickerTableViewCell {
-            delegate?.pickerView?(self, viewForRow: roundedRow, highlited: true, reusingView: cellToHighlight.customView)
-            delegate?.styleForHighlightedLabel?(cellToHighlight.titleLabel, inPickerView: self)
+            delegate?.pickerView?(self, viewForRow: roundedRow, index: indexForRow(roundedRow), highlited: true, reusingView: cellToHighlight.customView)
+            delegate?.pickerView?(self, styleForLabel: cellToHighlight.titleLabel, highlighted: true)
         }
     }
     
