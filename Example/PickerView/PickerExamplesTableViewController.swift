@@ -10,10 +10,17 @@ import UIKit
 
 class PickerExamplesTableViewController: UITableViewController {
     
+    // MARK: - Nested Types
+    
+    enum ItemsType : Int {
+        case Label, CustomView
+    }
+    
     // MARK: - Properties
     
     @IBOutlet weak var scrollingStyleOption: UISegmentedControl!
     @IBOutlet weak var selectionStyleOption: UISegmentedControl!
+    @IBOutlet weak var itemsOption: UISegmentedControl!
     
     var pickedNumber: String?
     var pickedOSX: String?
@@ -31,6 +38,7 @@ class PickerExamplesTableViewController: UITableViewController {
                 self.pickedNumber = newSelectedValue
                 self.tableView.reloadData()
             }
+            numberPicker.itemsType = ItemsType(rawValue: itemsOption.selectedSegmentIndex)!
         }
         
         if segue.identifier == "showNamePicker" {
@@ -43,6 +51,7 @@ class PickerExamplesTableViewController: UITableViewController {
                 self.pickedOSX = newSelectedValue
                 self.tableView.reloadData()
             }
+            osxPicker.itemsType = ItemsType(rawValue: itemsOption.selectedSegmentIndex)!
         }
     }
     
