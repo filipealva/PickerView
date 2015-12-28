@@ -36,7 +36,7 @@ import UIKit
     optional func pickerView(pickerView: PickerView, didSelectRow row: Int, index: Int)
     optional func pickerView(pickerView: PickerView, didTapRow row: Int, index: Int)
     optional func pickerView(pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool)
-    optional func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlited: Bool, reusingView view: UIView?) -> UIView
+    optional func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlited: Bool, reusingView view: UIView?) -> UIView?
 }
 
 public class PickerView: UIView {
