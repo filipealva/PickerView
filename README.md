@@ -148,7 +148,7 @@ func styleForLabel(label: UILabel, inPickerView pickerView: PickerView) {
 And this method allows you to customize the label of highlighted row in `PickerView`:
 
 ```swift
-func styleForLabel(label: UILabel, inPickerView pickerView: PickerView) {
+func styleForHighlightedLabel(label: UILabel, inPickerView pickerView: PickerView) {
     label.textAlignment = .Center
     label.font = UIFont.systemFontOfSize(25.0) // Change the size of font
     label.textColor = view.tintColor // Change the text color
