@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eOO-fd-yjP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eOO-fd-yjP">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--PickerView-->
@@ -12,22 +12,20 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="0oK-6D-DQm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Customize" id="LVw-B2-jNB">
                                 <string key="footerTitle">You can also set a custom apperance for the text in two different states (regular and highlighted) through PickerViewDelegate methods.</string>
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="180" id="v6A-J8-V0j">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="180"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="252" id="v6A-J8-V0j">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v6A-J8-V0j" id="e9v-l0-cKA">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="251"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QFu-PX-yJo">
                                                     <rect key="frame" x="15" y="54" width="570" height="29"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="RTd-2I-l7P"/>
                                                     </constraints>
@@ -38,7 +36,6 @@
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scrolling Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-0P-n7W">
                                                     <rect key="frame" x="15" y="25" width="570" height="21"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="8zw-tC-pnu"/>
                                                     </constraints>
@@ -48,7 +45,6 @@
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wWD-ad-Wfw">
                                                     <rect key="frame" x="15" y="126" width="570" height="29"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="432-KF-SZz"/>
                                                     </constraints>
@@ -61,7 +57,6 @@
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selection Indicator Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNP-uX-l1F">
                                                     <rect key="frame" x="15" y="96" width="570" height="21"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zT0-c9-iCd"/>
                                                     </constraints>
@@ -69,31 +64,54 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8q-cm-wQj">
+                                                    <rect key="frame" x="15" y="168" width="570" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="0gi-LC-5hr"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bKN-Xu-lXf">
+                                                    <rect key="frame" x="15" y="198" width="570" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="lak-7M-OAF"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="Label"/>
+                                                        <segment title="Custom view"/>
+                                                    </segments>
+                                                </segmentedControl>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bKN-Xu-lXf" secondAttribute="trailing" constant="15" id="6iI-BI-gUL"/>
+                                                <constraint firstAttribute="trailing" secondItem="F8q-cm-wQj" secondAttribute="trailing" constant="15" id="8BY-iZ-giB"/>
                                                 <constraint firstItem="wWD-ad-Wfw" firstAttribute="leading" secondItem="e9v-l0-cKA" secondAttribute="leading" constant="15" id="98t-gt-WhT"/>
                                                 <constraint firstAttribute="trailing" secondItem="wWD-ad-Wfw" secondAttribute="trailing" constant="15" id="EWZ-DD-254"/>
+                                                <constraint firstItem="bKN-Xu-lXf" firstAttribute="leading" secondItem="e9v-l0-cKA" secondAttribute="leading" constant="15" id="Frb-aV-Ylo"/>
                                                 <constraint firstItem="QFu-PX-yJo" firstAttribute="leading" secondItem="e9v-l0-cKA" secondAttribute="leading" constant="15" id="IcR-6f-a6K"/>
                                                 <constraint firstItem="jNP-uX-l1F" firstAttribute="leading" secondItem="e9v-l0-cKA" secondAttribute="leading" constant="15" id="LEg-8d-UsH"/>
+                                                <constraint firstItem="F8q-cm-wQj" firstAttribute="top" secondItem="wWD-ad-Wfw" secondAttribute="bottom" constant="14" id="M8n-z5-Wd1"/>
                                                 <constraint firstAttribute="trailing" secondItem="8bs-0P-n7W" secondAttribute="trailing" constant="15" id="OaI-OV-VZp"/>
+                                                <constraint firstItem="F8q-cm-wQj" firstAttribute="leading" secondItem="e9v-l0-cKA" secondAttribute="leading" constant="15" id="aj2-3U-Y8e"/>
                                                 <constraint firstAttribute="trailing" secondItem="QFu-PX-yJo" secondAttribute="trailing" constant="15" id="cAO-ao-hCw"/>
                                                 <constraint firstItem="8bs-0P-n7W" firstAttribute="top" secondItem="e9v-l0-cKA" secondAttribute="top" constant="25" id="eT2-fs-w9f"/>
                                                 <constraint firstItem="QFu-PX-yJo" firstAttribute="top" secondItem="8bs-0P-n7W" secondAttribute="bottom" constant="8" id="hDi-da-Z9B"/>
                                                 <constraint firstItem="8bs-0P-n7W" firstAttribute="leading" secondItem="e9v-l0-cKA" secondAttribute="leading" constant="15" id="mM3-5Q-FMI"/>
                                                 <constraint firstItem="jNP-uX-l1F" firstAttribute="top" secondItem="QFu-PX-yJo" secondAttribute="bottom" constant="14" id="mWr-b6-JhJ"/>
+                                                <constraint firstItem="bKN-Xu-lXf" firstAttribute="top" secondItem="F8q-cm-wQj" secondAttribute="bottom" constant="9" id="oyX-dF-Yio"/>
                                                 <constraint firstAttribute="trailing" secondItem="jNP-uX-l1F" secondAttribute="trailing" constant="15" id="ugc-Te-1Ix"/>
                                                 <constraint firstItem="wWD-ad-Wfw" firstAttribute="top" secondItem="jNP-uX-l1F" secondAttribute="bottom" constant="9" id="wH2-5h-L35"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Pick a number" id="NUr-pG-Hv7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="2ZP-j7-egU">
-                                        <rect key="frame" x="0.0" y="377" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="449" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2ZP-j7-egU" id="Y7N-Ko-lLy">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -101,7 +119,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap here to pick a number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEL-Aq-qk3">
                                                     <rect key="frame" x="15" y="11" width="570" height="37"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="7sX-1k-LWL"/>
                                                     </constraints>
@@ -110,21 +127,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="yEL-Aq-qk3" firstAttribute="top" secondItem="Y7N-Ko-lLy" secondAttribute="top" constant="11" id="Wey-ti-97T"/>
                                                 <constraint firstItem="yEL-Aq-qk3" firstAttribute="leading" secondItem="Y7N-Ko-lLy" secondAttribute="leading" constant="15" id="ooM-U9-Xvn"/>
                                                 <constraint firstAttribute="trailing" secondItem="yEL-Aq-qk3" secondAttribute="trailing" constant="15" id="yrt-2H-xDN"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Pick an OS X" id="y03-Ax-YV8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="3ZU-sI-G1e">
-                                        <rect key="frame" x="0.0" y="488" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="560" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ZU-sI-G1e" id="eSK-4Z-f6h">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -132,7 +147,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap here to pick an OS X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="410-4s-PwW">
                                                     <rect key="frame" x="15" y="11" width="570" height="37"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="n78-Ey-qBw"/>
                                                     </constraints>
@@ -141,14 +155,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="410-4s-PwW" firstAttribute="leading" secondItem="eSK-4Z-f6h" secondAttribute="leading" constant="15" id="enZ-yk-pxi"/>
                                                 <constraint firstAttribute="trailing" secondItem="410-4s-PwW" secondAttribute="trailing" constant="15" id="iiq-wr-r2E"/>
                                                 <constraint firstItem="410-4s-PwW" firstAttribute="top" secondItem="eSK-4Z-f6h" secondAttribute="top" constant="11" id="qcW-Wr-9nS"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -160,6 +172,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="PickerView" id="OTh-PF-nzE"/>
                     <connections>
+                        <outlet property="itemsOption" destination="bKN-Xu-lXf" id="UOO-h0-gTO"/>
                         <outlet property="scrollingStyleOption" destination="QFu-PX-yJo" id="afR-Ml-zgQ"/>
                         <outlet property="selectionStyleOption" destination="wWD-ad-Wfw" id="RbS-p1-fT5"/>
                         <segue destination="1SX-Xq-Xf8" kind="presentation" identifier="showNumberPicker" id="rUO-OK-iEn"/>
@@ -184,11 +197,9 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Roq-GA-8k5" customClass="PickerView" customModule="PickerView">
                                 <rect key="frame" x="60" y="104" width="480" height="456"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Roq-GA-8k5" firstAttribute="top" secondItem="Nls-ml-GWW" secondAttribute="bottom" constant="40" id="N6K-H2-kmq"/>
@@ -227,7 +238,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DPX-yL-VEf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -246,7 +256,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gKh-Sj-HpO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
