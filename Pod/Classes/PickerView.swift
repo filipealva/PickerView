@@ -380,7 +380,7 @@ public class PickerView: UIView {
         super.willMoveToWindow(newWindow)
         
         if let _ = newWindow {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "adjustCurrentSelectedAfterOrientationChanges",
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PickerView.adjustCurrentSelectedAfterOrientationChanges),
                                                             name: UIDeviceOrientationDidChangeNotification, object: nil)
         } else {
             NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
