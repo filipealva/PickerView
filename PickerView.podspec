@@ -21,6 +21,7 @@ PickerView is an easy to use and customize alternative to UIPickerView written i
 DESC
 
 s.homepage         = "https://github.com/filipealva/PickerView"
+s.documentation_url = "https://github.com/filipealva/PickerView/blob/master/README.md"
 # s.screenshots     = "http://s13.postimg.org/kaq8txo87/Captura_de_Tela_2015_10_05_s_11_01_06.png", "http://s13.postimg.org/i4vxzfkrr/Captura_de_Tela_2015_10_05_s_11_00_42.png", "http://s13.postimg.org/ou2hfg63r/Captura_de_Tela_2015_10_05_s_11_00_54.png"
 s.license          = 'MIT'
 s.author           = { "Filipe Alvarenga" => "ofilipealvarenga@gmail.com" }
