@@ -36,7 +36,7 @@ import UIKit
     optional func pickerView(pickerView: PickerView, didSelectRow row: Int, index: Int)
     optional func pickerView(pickerView: PickerView, didTapRow row: Int, index: Int)
     optional func pickerView(pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool)
-    optional func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlited: Bool, reusingView view: UIView?) -> UIView?
+    optional func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView?
 }
 
 public class PickerView: UIView {
@@ -46,6 +46,7 @@ public class PickerView: UIView {
     private class SimplePickerTableViewCell: UITableViewCell {
         lazy var titleLabel: UILabel = {
             let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: self.contentView.frame.width, height: self.contentView.frame.height))
+            titleLabel.textAlignment = .Center
             
             return titleLabel
         }()
@@ -541,7 +542,7 @@ extension PickerView: UITableViewDataSource {
         
         let pickerViewCell = tableView.dequeueReusableCellWithIdentifier(pickerViewCellIdentifier, forIndexPath: indexPath) as! SimplePickerTableViewCell
         
-        let view = delegate?.pickerView?(self, viewForRow: indexPath.row, index: indexForRow(indexPath.row), highlited: indexPath.row == indexOfSelectedRow, reusingView: pickerViewCell.customView)
+        let view = delegate?.pickerView?(self, viewForRow: indexPath.row, index: indexForRow(indexPath.row), highlighted: indexPath.row == indexOfSelectedRow, reusingView: pickerViewCell.customView)
         
         pickerViewCell.selectionStyle = .None
         pickerViewCell.backgroundColor = pickerCellBackgroundColor ?? UIColor.whiteColor()
@@ -636,7 +637,7 @@ extension PickerView: UIScrollViewDelegate {
         if let visibleRows = tableView.indexPathsForVisibleRows {
             for indexPath in visibleRows {
                 if let cellToUnhighlight = tableView.cellForRowAtIndexPath(indexPath) as? SimplePickerTableViewCell where indexPath.row != roundedRow {
-                    delegate?.pickerView?(self, viewForRow: indexPath.row, index: indexForRow(indexPath.row), highlited: false, reusingView: cellToUnhighlight.customView)
+                    delegate?.pickerView?(self, viewForRow: indexPath.row, index: indexForRow(indexPath.row), highlighted: false, reusingView: cellToUnhighlight.customView)
                     delegate?.pickerView?(self, styleForLabel: cellToUnhighlight.titleLabel, highlighted: false)
                 }
             }
@@ -644,7 +645,7 @@ extension PickerView: UIScrollViewDelegate {
         
         // Highlight the current selected cell during scroll
         if let cellToHighlight = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: roundedRow, inSection: 0)) as? SimplePickerTableViewCell {
-            delegate?.pickerView?(self, viewForRow: roundedRow, index: indexForRow(roundedRow), highlited: true, reusingView: cellToHighlight.customView)
+            delegate?.pickerView?(self, viewForRow: roundedRow, index: indexForRow(roundedRow), highlighted: true, reusingView: cellToHighlight.customView)
             delegate?.pickerView?(self, styleForLabel: cellToHighlight.titleLabel, highlighted: true)
         }
     }
