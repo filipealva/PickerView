@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "PickerView"
-s.version          = "0.1.0"
+s.version          = "0.1.1"
 s.summary          = "A customizable alternative to UIPickerView."
 
 # This description is used to generate tags and improve search results.
@@ -17,7 +17,7 @@ s.summary          = "A customizable alternative to UIPickerView."
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 s.description      = <<-DESC
-PickerView is an easy to use and customize alternative to UIPickerView written in Swift. It was developed to provide a highly customizable experience, so you can implement your custom designed UIPickerView.
+PickerView is an easy to use and customize alternative to UIPickerView written in Swift, but works with Objective-C too. It was developed to provide a highly customizable experience, so you can implement your custom designed UIPickerView.
 DESC
 
 s.homepage         = "https://github.com/filipealva/PickerView"
@@ -25,7 +25,7 @@ s.homepage         = "https://github.com/filipealva/PickerView"
 s.license          = 'MIT'
 s.author           = { "Filipe Alvarenga" => "ofilipealvarenga@gmail.com" }
 s.source           = { :git => "https://github.com/filipealva/PickerView.git", :tag => s.version.to_s }
-# s.social_media_url = 'https://twitter.com/filipealva'
+# s.social_media_url = 'https://facebook.com/filipealva'
 
 s.platform     = :ios, '8.0'
 s.requires_arc = true
