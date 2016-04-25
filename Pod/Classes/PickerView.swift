@@ -233,6 +233,7 @@ public class PickerView: UIView {
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             self.tableView.delegate = self
             self.tableView.dataSource = self
+            self.tableView.reloadData()
             
             dispatch_async(dispatch_get_main_queue(),{
                 // Some UI Adjustments we need to do after setting UITableView data source & delegate.
