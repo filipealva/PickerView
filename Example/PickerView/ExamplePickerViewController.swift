@@ -174,7 +174,7 @@ extension ExamplePickerViewController: PickerViewDelegate {
         }
     }
     
-    func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlited: Bool, reusingView view: UIView?) -> UIView? {
+    func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
         
         if (itemsType != .CustomView) {
             return nil
@@ -225,7 +225,7 @@ extension ExamplePickerViewController: PickerViewDelegate {
             label?.text = osxNames[index]
         }
         
-        let alpha : CGFloat = highlited ? 1.0 : 0.5
+        let alpha: CGFloat = highlighted ? 1.0 : 0.5
         
         imageView?.alpha = alpha
         label?.alpha = alpha
