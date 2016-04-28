@@ -12,6 +12,8 @@
 
 It requires Xcode 7.0+ and Swift 2.0.
 
+**NOTE:** When `PickerView` was first built it wasn't thought to support Objective-C projects, but the community demanded it and recently we've released the version `0.2.0` which supports Objective-C projects. After some tests we noticed some bugs when using from Objective-C, so we've this [issue](https://github.com/filipealva/PickerView/issues/11) open and we need some help to fix that, so if you are making some adjustments to run in your Objective-C project, please, contribute with us to fix these problems. Thanks.
+
 Your project deployment target must be `iOS 8.0+`
 
 ## Installation
