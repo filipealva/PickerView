@@ -162,7 +162,7 @@ func pickerView(pickerView: PickerView, styleForLabel label: UILabel, highlighte
 }
 ```
 
-If you want to provide a totally customized view instead of presenting 
+If you want to provide a totally customized view instead of presenting just a row with a text label inside
 
 ```swift
 func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
