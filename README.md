@@ -100,7 +100,7 @@ And the title for each row:
 
 ```swift
 func pickerView(pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
-    let item = itemsThatYouWantToPresent[row] 
+    let item = itemsThatYouWantToPresent[index] // NOTE: Use `index` instead of `row` to retrieve your data correctly
     return item.text 
 }
 ```
