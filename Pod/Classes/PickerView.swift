@@ -226,21 +226,17 @@ public class PickerView: UIView {
         setupSelectionImageView()
         setupDefaultSelectionIndicator()
         
-        // Setup UITableView data source & delegate in background
-        // Reason: When PickerView scrollingStyle is set to .Infinite and the data source is huge, setting UITableView data source & delegate
-        // on main queue can causes a little delay in the transition animation (push or modal animation)
-        let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
-        //dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            self.tableView.delegate = self
-            self.tableView.dataSource = self
-            self.tableView.reloadData()
-            
-            //dispatch_async(dispatch_get_main_queue(),{
-                // Some UI Adjustments we need to do after setting UITableView data source & delegate.
-                self.configureFirstSelection()
-                self.adjustSelectionOverlayHeightConstraint()
-            //})
-        //}
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
+        
+        // This needs to be done after a delay - I am guessing it basically needs to be called once 
+        // the view is already displaying
+        dispatch_async(dispatch_get_main_queue(),{
+            // Some UI Adjustments we need to do after setting UITableView data source & delegate.
+            self.configureFirstSelection()
+            self.adjustSelectionOverlayHeightConstraint()
+        })
     }
     
     private func setupTableView() {
