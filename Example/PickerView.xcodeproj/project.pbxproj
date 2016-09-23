@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03D0C50E1BC2D26F00A8E8D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D0C50C1BC2D26F00A8E8D5 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		03D0C5111BC2D28E00A8E8D5 /* ExamplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D0C50F1BC2D28E00A8E8D5 /* ExamplePickerViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		03D0C5121BC2D28E00A8E8D5 /* PickerExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D0C5101BC2D28E00A8E8D5 /* PickerExamplesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		03D0C50E1BC2D26F00A8E8D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D0C50C1BC2D26F00A8E8D5 /* Main.storyboard */; };
+		03D0C5111BC2D28E00A8E8D5 /* ExamplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D0C50F1BC2D28E00A8E8D5 /* ExamplePickerViewController.swift */; };
+		03D0C5121BC2D28E00A8E8D5 /* PickerExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D0C5101BC2D28E00A8E8D5 /* PickerExamplesTableViewController.swift */; };
 		24C28FB90E6335629F9BBA5C /* Pods_PickerView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E02C6B72F5FA7C35F3C306 /* Pods_PickerView_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -234,9 +234,11 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -514,6 +516,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -527,6 +530,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -547,6 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PickerView_Example.app/PickerView_Example";
 			};
 			name = Debug;
@@ -564,6 +569,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PickerView_Example.app/PickerView_Example";
 			};
 			name = Release;

@@ -14,7 +14,7 @@ class ExamplePickerViewController: UIViewController {
     // MARK: - Nested Types
 
     enum PresentationType {
-        case Numbers(Int, Int), Names(Int, Int) // NOTE: (Int, Int) represent the rawValue's of PickerView style enums.
+        case numbers(Int, Int), names(Int, Int) // NOTE: (Int, Int) represent the rawValue's of PickerView style enums.
     }
 
     // MARK: - Properties
@@ -34,12 +34,12 @@ class ExamplePickerViewController: UIViewController {
     let osxNames = ["Cheetah", "Puma", "Jaguar", "Panther", "Tiger", "Leopard", "Snow Leopard", "Lion", "Montain Lion",
                     "Mavericks", "Yosemite", "El Capitan"]
     
-    var presentationType = PresentationType.Numbers(0, 0)
+    var presentationType = PresentationType.numbers(0, 0)
     
     var currentSelectedValue: String?
-    var updateSelectedValue: ((newSelectedValue: String) -> Void)?
+    var updateSelectedValue: ((_ newSelectedValue: String) -> Void)?
     
-    var itemsType: PickerExamplesTableViewController.ItemsType = .Label
+    var itemsType: PickerExamplesTableViewController.ItemsType = .label
     
     // MARK: - Life Cycle
     
@@ -52,13 +52,13 @@ class ExamplePickerViewController: UIViewController {
     
     // MARK: - Configure Subviews
     
-    private func configureNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+    fileprivate func configureNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.translucent = true
+        navigationController?.navigationBar.isTranslucent = true
     }
     
-    private func configureExamplePicker() {
+    fileprivate func configureExamplePicker() {
         examplePicker.dataSource = self
         examplePicker.delegate = self
         
@@ -66,45 +66,45 @@ class ExamplePickerViewController: UIViewController {
         let selectionStyle: PickerView.SelectionStyle
         
         switch presentationType {
-        case let .Numbers(scrollingStyleRaw, selectionStyleRaw):
+        case let .numbers(scrollingStyleRaw, selectionStyleRaw):
             scrollingStyle = PickerView.ScrollingStyle(rawValue: scrollingStyleRaw)!
             selectionStyle = PickerView.SelectionStyle(rawValue: selectionStyleRaw)!
             
             examplePicker.scrollingStyle = scrollingStyle
             examplePicker.selectionStyle = selectionStyle
             
-            if let currentSelected = currentSelectedValue, indexOfCurrentSelectedValue = numbers.indexOf(currentSelected) {
+            if let currentSelected = currentSelectedValue, let indexOfCurrentSelectedValue = numbers.index(of: currentSelected) {
                 examplePicker.currentSelectedRow = indexOfCurrentSelectedValue
             }
-        case let .Names(scrollingStyleRaw, selectionStyleRaw):
+        case let .names(scrollingStyleRaw, selectionStyleRaw):
             scrollingStyle = PickerView.ScrollingStyle(rawValue: scrollingStyleRaw)!
             selectionStyle = PickerView.SelectionStyle(rawValue: selectionStyleRaw)!
             
             examplePicker.scrollingStyle = scrollingStyle
             examplePicker.selectionStyle = selectionStyle
             
-            if let currentSelected = currentSelectedValue, indexOfCurrentSelectedValue = osxNames.indexOf(currentSelected) {
+            if let currentSelected = currentSelectedValue, let indexOfCurrentSelectedValue = osxNames.index(of: currentSelected) {
                 examplePicker.currentSelectedRow = indexOfCurrentSelectedValue
             }
         }
         
-        if selectionStyle == .Image {
+        if selectionStyle == .image {
             examplePicker.selectionImageView.image = UIImage(named: "SelectionImage")!
         }
     }
     
     // MARK: Actions
     
-    @IBAction func close(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func close(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func setNewPickerValue(sender: UIBarButtonItem) {
-        if let updateValue = updateSelectedValue, currentSelected = currentSelectedValue {
-            updateValue(newSelectedValue: currentSelected)
+    @IBAction func setNewPickerValue(_ sender: UIBarButtonItem) {
+        if let updateValue = updateSelectedValue, let currentSelected = currentSelectedValue {
+            updateValue(currentSelected)
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -112,20 +112,20 @@ extension ExamplePickerViewController: PickerViewDataSource {
     
     // MARK: - PickerViewDataSource
     
-    func pickerViewNumberOfRows(pickerView: PickerView) -> Int {
+    func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
         switch presentationType {
-        case .Numbers(_, _):
+        case .numbers(_, _):
             return numbers.count
-        case .Names(_, _):
+        case .names(_, _):
             return osxNames.count
         }
     }
     
-    func pickerView(pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
+    func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
         switch presentationType {
-        case .Numbers(_, _):
+        case .numbers(_, _):
             return numbers[index]
-        case .Names(_, _):
+        case .names(_, _):
             return osxNames[index]
         }
     }
@@ -136,28 +136,28 @@ extension ExamplePickerViewController: PickerViewDelegate {
     
     // MARK: - PickerViewDelegate
     
-    func pickerViewHeightForRows(pickerView: PickerView) -> CGFloat {
+    func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
         return 50.0
     }
     
-    func pickerView(pickerView: PickerView, didSelectRow row: Int, index: Int) {
+    func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {
         switch presentationType {
-        case .Numbers(_, _):
+        case .numbers(_, _):
             currentSelectedValue = numbers[index]
-        case .Names(_, _):
+        case .names(_, _):
             currentSelectedValue = osxNames[index]
         }
 
         print(currentSelectedValue)
     }
     
-    func pickerView(pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
-        label.textAlignment = .Center
+    func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
+        label.textAlignment = .center
         if #available(iOS 8.2, *) {
             if (highlighted) {
-                label.font = UIFont.systemFontOfSize(26.0, weight: UIFontWeightLight)
+                label.font = UIFont.systemFont(ofSize: 26.0, weight: UIFontWeightLight)
             } else {
-                label.font = UIFont.systemFontOfSize(16.0, weight: UIFontWeightLight)
+                label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightLight)
             }
         } else {
             if (highlighted) {
@@ -174,9 +174,9 @@ extension ExamplePickerViewController: PickerViewDelegate {
         }
     }
     
-    func pickerView(pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
+    func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
         
-        if (itemsType != .CustomView) {
+        if (itemsType != .customView) {
             return nil
         }
         
@@ -187,13 +187,13 @@ extension ExamplePickerViewController: PickerViewDelegate {
         
         if (customView == nil) {
             var frame = pickerView.frame
-            frame.origin = CGPointZero
+            frame.origin = CGPoint.zero
             frame.size.height = 50
             customView = UIView(frame: frame)
             
             let imageView = UIImageView(frame: frame)
             imageView.tag = imageTag
-            imageView.contentMode = .ScaleAspectFill
+            imageView.contentMode = .scaleAspectFill
             imageView.image = UIImage(named: "AbstractImage")
             imageView.clipsToBounds = true
             
@@ -201,13 +201,13 @@ extension ExamplePickerViewController: PickerViewDelegate {
             
             let label = UILabel(frame: frame)
             label.tag = labelTag
-            label.textColor = UIColor.whiteColor()
-            label.shadowColor = UIColor.blackColor()
-            label.shadowOffset = CGSizeMake(1.0, 1.0)
-            label.textAlignment = .Center
+            label.textColor = UIColor.white
+            label.shadowColor = UIColor.black
+            label.shadowOffset = CGSize(width: 1.0, height: 1.0)
+            label.textAlignment = .center
             
             if #available(iOS 8.2, *) {
-                label.font = UIFont.systemFontOfSize(26.0, weight: UIFontWeightLight)
+                label.font = UIFont.systemFont(ofSize: 26.0, weight: UIFontWeightLight)
             } else {
                 label.font = UIFont(name: "HelveticaNeue-Light", size: 26.0)
             }
@@ -219,9 +219,9 @@ extension ExamplePickerViewController: PickerViewDelegate {
         let label = customView?.viewWithTag(labelTag) as? UILabel
         
         switch presentationType {
-        case .Numbers(_, _):
+        case .numbers(_, _):
             label?.text = numbers[index]
-        case .Names(_, _):
+        case .names(_, _):
             label?.text = osxNames[index]
         }
         
