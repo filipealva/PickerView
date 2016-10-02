@@ -239,6 +239,10 @@ See the people who helps to improve this project: [Contributors](https://github.
 
 **Special thanks to**: [@bguidolim](https://twitter.com/bguidolim) and [@jairobjunior](https://github.com/jairobjunior).
 
+## Starring is caring 🌟
+
+If you liked the project and want it to continue, please star it. It is a way for me to know the impact of the project. Thank you <3 
+
 ## License
 
 PickerView is available under the MIT license. See the LICENSE file for more info.
