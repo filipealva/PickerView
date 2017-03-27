@@ -523,6 +523,10 @@ open class PickerView: UIView {
         tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(finalRow) * rowHeight), animated: animated)
     }
     
+    open func reloadPickerView() {
+        tableView.reloadData()
+    }
+    
 }
 
 extension PickerView: UITableViewDataSource {
