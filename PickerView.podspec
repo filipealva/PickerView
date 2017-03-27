@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "PickerView"
-s.version          = "0.3.0"
+s.version          = "0.3.1"
 s.summary          = "A customizable alternative to UIPickerView."
 
 # This description is used to generate tags and improve search results.

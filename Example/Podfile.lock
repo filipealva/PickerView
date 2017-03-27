@@ -1,5 +1,5 @@
 PODS:
-  - PickerView (0.1.0)
+  - PickerView (0.3.1)
 
 DEPENDENCIES:
   - PickerView (from `../`)
@@ -9,6 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  PickerView: 32fd5d98dfee8bd70482c91507fb8b3123b77bf3
+  PickerView: 81b0120057c13de5afce45ffc8bd5428a79f38a6
 
-COCOAPODS: 0.39.0.beta.4
+PODFILE CHECKSUM: 9b1fd8fecb84aa7f94db77a0002c87ac8fc2025d
+
+COCOAPODS: 1.2.0

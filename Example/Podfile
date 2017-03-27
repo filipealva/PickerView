@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'PickerView_Example', :exclusive => true do
+target 'PickerView_Example' do
   pod "PickerView", :path => "../"
 end
 
-target 'PickerView_Tests', :exclusive => true do
+target 'PickerView_Tests' do
   pod "PickerView", :path => "../"
 
   

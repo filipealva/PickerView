@@ -148,7 +148,7 @@ extension ExamplePickerViewController: PickerViewDelegate {
             currentSelectedValue = osxNames[index]
         }
 
-        print(currentSelectedValue)
+        print(currentSelectedValue ?? "")
     }
     
     func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
