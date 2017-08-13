@@ -43,7 +43,7 @@ open class PickerView: UIView {
     
     // MARK: Nested Types
     
-    fileprivate class SimplePickerTableViewCell: UITableViewCell {
+    fileprivate class SimplePickerCollectionViewCell: UICollectionViewCell {
         lazy var titleLabel: UILabel = {
             let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: self.contentView.frame.width, height: self.contentView.frame.height))
             titleLabel.textAlignment = .center
@@ -64,6 +64,10 @@ open class PickerView: UIView {
     
     @objc public enum ScrollingStyle: Int {
         case `default`, infinite
+    }
+    
+    @objc public enum ScrollingDirection: Int {
+        case vertical, horizontal
     }
     
     /**
@@ -118,7 +122,7 @@ open class PickerView: UIView {
     
     override open var backgroundColor: UIColor? {
         didSet {
-            self.tableView.backgroundColor = self.backgroundColor
+            self.collectionView.backgroundColor = self.backgroundColor
             self.pickerCellBackgroundColor = self.backgroundColor
         }
     }
@@ -151,10 +155,11 @@ open class PickerView: UIView {
         return selectionImageView
     }()
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
+    let layout = UICollectionViewFlowLayout()
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
         
-        return tableView
+        return collectionView
     }()
     
     fileprivate var infinityRowsMultiplier: Int = 1
@@ -177,6 +182,17 @@ open class PickerView: UIView {
                 infinityRowsMultiplier = 1
             case .infinite:
                 infinityRowsMultiplier = generateInfinityRowsMultiplier()
+            }
+        }
+    }
+    
+    open var scrollingDirection = ScrollingDirection.vertical {
+        didSet {
+            switch self.scrollingDirection {
+            case .horizontal:
+                layout.scrollDirection = .horizontal
+            case .vertical:
+                layout.scrollDirection = .vertical
             }
         }
     }
@@ -221,60 +237,58 @@ open class PickerView: UIView {
         
         // Setup subviews constraints and apperance
         translatesAutoresizingMaskIntoConstraints = false
-        setupTableView()
+        setupCollectionView()
         setupSelectionOverlay()
         setupSelectionImageView()
         setupDefaultSelectionIndicator()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.reloadData()
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.reloadData()
         
         // This needs to be done after a delay - I am guessing it basically needs to be called once 
         // the view is already displaying
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            // Some UI Adjustments we need to do after setting UITableView data source & delegate.
+            // Some UI Adjustments we need to do after setting UIcollectiongView data source & delegate.
             self.configureFirstSelection()
             self.adjustSelectionOverlayHeightConstraint()
         }
     }
     
-    fileprivate func setupTableView() {
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.separatorColor = .none
-        tableView.allowsSelection = true
-        tableView.allowsMultipleSelection = false
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
-        tableView.scrollsToTop = false
-        tableView.register(SimplePickerTableViewCell.classForCoder(), forCellReuseIdentifier: self.pickerViewCellIdentifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(tableView)
+    fileprivate func setupCollectionView() {
+        collectionView.backgroundColor = .clear
+        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.scrollsToTop = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(SimplePickerCollectionViewCell.self, forCellWithReuseIdentifier: self.pickerViewCellIdentifier)
+        addSubview(collectionView)
         
-        let tableViewH = NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: self,
+        let collectiongViewH = NSLayoutConstraint(item: collectionView, attribute: .height, relatedBy: .equal, toItem: self,
                                                 attribute: .height, multiplier: 1, constant: 0)
-        addConstraint(tableViewH)
+        addConstraint(collectiongViewH)
         
-        let tableViewW = NSLayoutConstraint(item: tableView, attribute: .width, relatedBy: .equal, toItem: self,
+        let collectiongViewW = NSLayoutConstraint(item: collectionView, attribute: .width, relatedBy: .equal, toItem: self,
                                                 attribute: .width, multiplier: 1, constant: 0)
-        addConstraint(tableViewW)
+        addConstraint(collectiongViewW)
         
-        let tableViewL = NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: self,
+        let collectiongViewL = NSLayoutConstraint(item: collectionView, attribute: .leading, relatedBy: .equal, toItem: self,
                                                 attribute: .leading, multiplier: 1, constant: 0)
-        addConstraint(tableViewL)
+        addConstraint(collectiongViewL)
         
-        let tableViewTop = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: self,
+        let collectiongViewTop = NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: self,
                                                 attribute: .top, multiplier: 1, constant: 0)
-        addConstraint(tableViewTop)
+        addConstraint(collectiongViewTop)
         
-        let tableViewBottom = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: self,
+        let collectiongViewBottom = NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: self,
                                                     attribute: .bottom, multiplier: 1, constant: 0)
-        addConstraint(tableViewBottom)
+        addConstraint(collectiongViewBottom)
         
-        let tableViewT = NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: self,
+        let collectiongViewT = NSLayoutConstraint(item: collectionView, attribute: .trailing, relatedBy: .equal, toItem: self,
                                                 attribute: .trailing, multiplier: 1, constant: 0)
-        addConstraint(tableViewT)
+        addConstraint(collectiongViewT)
     }
     
     fileprivate func setupSelectionOverlay() {
@@ -395,6 +409,7 @@ open class PickerView: UIView {
     }
     
     fileprivate func adjustSelectionOverlayHeightConstraint() {
+        
         if selectionOverlayH.constant != rowHeight || selectionImageH.constant != rowHeight || selectionIndicatorB.constant != (rowHeight / 2) {
             selectionOverlayH.constant = rowHeight
             selectionImageH.constant = rowHeight
@@ -441,19 +456,25 @@ open class PickerView: UIView {
     */
     fileprivate func selectedNearbyToMiddleRow(_ row: Int) {
         currentSelectedRow = row
-        tableView.reloadData()
+        collectionView.reloadData()
         
         repeat {
             // This line adjust the contentInset to UIEdgeInsetZero because when the PickerView are inside of a UIViewController 
-            // presented by a UINavigation controller, the tableView contentInset is affected.
-            tableView.contentInset = UIEdgeInsets.zero
+            // presented by a UINavigation controller, the collectiongView contentInset is affected.
+            collectionView.contentInset = UIEdgeInsets.zero
             
             let indexOfSelectedRow = visibleIndexOfSelectedRow()
-            tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(indexOfSelectedRow) * rowHeight), animated: false)
+            
+            switch scrollingDirection {
+            case .horizontal:
+                collectionView.setContentOffset(CGPoint(x: CGFloat(indexOfSelectedRow) * layout.itemSize.width, y: 0.0), animated: false)
+            case .vertical:
+                collectionView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(indexOfSelectedRow) * layout.itemSize.height), animated: false)
+            }
             
             delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
             
-        } while !(numberOfRowsByDataSource > 0 && tableView.numberOfRows(inSection: 0) > 0)
+        } while !(numberOfRowsByDataSource > 0 && collectionView.numberOfItems(inSection: 0) > 0)
     }
     
     /**
@@ -475,11 +496,11 @@ open class PickerView: UIView {
     }
     
     fileprivate func turnPickerViewOn() {
-        tableView.isScrollEnabled = true
+        collectionView.isScrollEnabled = true
     }
     
     fileprivate func turnPickerViewOff() {
-        tableView.isScrollEnabled = false
+        collectionView.isScrollEnabled = false
     }
     
     /**
@@ -494,7 +515,7 @@ open class PickerView: UIView {
         let middleIndex = numberOfRowsByDataSource * middleMultiplier
         let indexForSelectedRow: Int
     
-        if let _ = currentSelectedRow , scrollingStyle == .default && currentSelectedRow == 0 {
+        if let _ = currentSelectedRow, scrollingStyle == .default && currentSelectedRow == 0 {
             indexForSelectedRow = 0
         } else if let _ = currentSelectedRow {
             indexForSelectedRow = middleIndex - (numberOfRowsByDataSource - currentSelectedRow)
@@ -520,46 +541,81 @@ open class PickerView: UIView {
         
         delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
         
-        tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(finalRow) * rowHeight), animated: animated)
+        switch scrollingDirection {
+        case .horizontal:
+            collectionView.setContentOffset(CGPoint(x: CGFloat(finalRow) * layout.itemSize.width, y: 0.0), animated: animated)
+        case .vertical:
+            collectionView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(finalRow) * layout.itemSize.height), animated: animated)
+        }
     }
     
     open func reloadPickerView() {
-        tableView.reloadData()
+        collectionView.reloadData()
     }
     
 }
 
-extension PickerView: UITableViewDataSource {
+extension PickerView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    // MARK: UITableViewDataSource
+    // MARK: UIcollectiongViewDataSource
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfRowsByDataSource * infinityRowsMultiplier
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfRowsInPickerView = dataSource!.pickerViewNumberOfRows(self) * infinityRowsMultiplier
+        
+        func getSize() -> CGSize {
+            switch scrollingDirection {
+            case .horizontal:
+                return CGSize(width: (frame.width / 2) + (rowHeight / 2), height: layout.itemSize.height)
+            case .vertical:
+                return CGSize(width: layout.itemSize.width, height: (frame.height / 2) + (rowHeight / 2))
+            }
+        }
+        
+        // When the scrolling reach the end on top/bottom we need to set the first/last row to appear in the center of PickerView, so that row must be bigger.
+        let size = getSize()
+        if (indexPath as NSIndexPath).row == 0 {
+            return size
+        } else if numberOfRowsInPickerView > 0 && (indexPath as NSIndexPath).row == numberOfRowsInPickerView - 1 {
+            return size
+        }
+        return CGSize(width: layout.itemSize.width, height: layout.itemSize.height)
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let indexOfSelectedRow = visibleIndexOfSelectedRow()
         
-        let pickerViewCell = tableView.dequeueReusableCell(withIdentifier: pickerViewCellIdentifier, for: indexPath) as! SimplePickerTableViewCell
+        let pickerViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: pickerViewCellIdentifier, for: indexPath) as! SimplePickerCollectionViewCell
         
         let view = delegate?.pickerView?(self, viewForRow: (indexPath as NSIndexPath).row, index: indexForRow((indexPath as NSIndexPath).row), highlighted: (indexPath as NSIndexPath).row == indexOfSelectedRow, reusingView: pickerViewCell.customView)
         
-        pickerViewCell.selectionStyle = .none
         pickerViewCell.backgroundColor = pickerCellBackgroundColor ?? UIColor.white
         
         if (view != nil) {
             var frame = view!.frame
-            frame.origin.y = (indexPath as NSIndexPath).row == 0 ? (self.frame.height / 2) - (rowHeight / 2) : 0.0
+            switch scrollingDirection {
+            case .horizontal:
+                frame.origin.x = (indexPath as NSIndexPath).row == 0 ? (self.frame.width / 2) - (layout.itemSize.width / 2) : 0.0
+            case .vertical:
+                frame.origin.y = (indexPath as NSIndexPath).row == 0 ? (self.frame.height / 2) - (layout.itemSize.height / 2) : 0.0
+            }
             view!.frame = frame
             pickerViewCell.customView = view
             pickerViewCell.contentView.addSubview(pickerViewCell.customView!)
             
         } else {
             // As the first row have a different size to fit in the middle of the PickerView and rows below, the titleLabel position must be adjusted.
-            let centerY = (indexPath as NSIndexPath).row == 0 ? (self.frame.height / 2) - (rowHeight / 2) : 0.0
+            let centerY = (indexPath as NSIndexPath).row == 0 ? (self.frame.height / 2) - (layout.itemSize.height / 2) : 0.0
             
-            pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: centerY, width: frame.width, height: rowHeight)
+            pickerViewCell.titleLabel.frame = CGRect(x: 0.0, y: centerY, width: frame.width, height: layout.itemSize.height)
             
             pickerViewCell.contentView.addSubview(pickerViewCell.titleLabel)
             pickerViewCell.titleLabel.backgroundColor = UIColor.clear
@@ -570,30 +626,15 @@ extension PickerView: UITableViewDataSource {
         
         return pickerViewCell
     }
-    
 }
 
-extension PickerView: UITableViewDelegate {
+extension PickerView: UICollectionViewDelegate {
     
-    // MARK: UITableViewDelegate
+    // MARK: UICollectionViewDelegate
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectTappedRow((indexPath as NSIndexPath).row)
     }
-    
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let numberOfRowsInPickerView = dataSource!.pickerViewNumberOfRows(self) * infinityRowsMultiplier
-        
-        // When the scrolling reach the end on top/bottom we need to set the first/last row to appear in the center of PickerView, so that row must be bigger.
-        if (indexPath as NSIndexPath).row == 0 {
-            return (frame.height / 2) + (rowHeight / 2)
-        } else if numberOfRowsInPickerView > 0 && (indexPath as NSIndexPath).row == numberOfRowsInPickerView - 1 {
-            return (frame.height / 2) + (rowHeight / 2)
-        }
-        
-        return rowHeight
-    }
-    
 }
 
 extension PickerView: UIScrollViewDelegate {
@@ -605,13 +646,20 @@ extension PickerView: UIScrollViewDelegate {
     }
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let partialRow = Float(targetContentOffset.pointee.y / rowHeight) // Get the estimative of what row will be the selected when the scroll animation ends.
+        
+        let partialRow = getPartialRow(scrollingDirection: scrollingDirection, contentOffset: targetContentOffset.pointee) // Get the estimative of what row will be the selected when the scroll animation ends.
         var roundedRow = Int(lroundf(partialRow)) // Round the estimative to a row
         
         if roundedRow < 0 {
             roundedRow = 0
         } else {
-            targetContentOffset.pointee.y = CGFloat(roundedRow) * rowHeight // Set the targetContentOffset (where the scrolling position will be when the animation ends) to a rounded value.
+            
+            switch scrollingDirection {
+            case .horizontal:
+                targetContentOffset.pointee.x = CGFloat(roundedRow) * layout.itemSize.width // Set the targetContentOffset (where the scrolling position will be when the animation ends) to a rounded value.
+            case .vertical:
+                targetContentOffset.pointee.y = CGFloat(roundedRow) * layout.itemSize.height // Set the targetContentOffset (where the scrolling position will be when the animation ends) to a rounded value.
+            }
         }
         
         // Update the currentSelectedRow and notify the delegate that we have a new selected row.
@@ -631,24 +679,31 @@ extension PickerView: UIScrollViewDelegate {
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let partialRow = Float(scrollView.contentOffset.y / rowHeight)
+        let partialRow = getPartialRow(scrollingDirection: scrollingDirection, contentOffset: scrollView.contentOffset)
         let roundedRow = Int(lroundf(partialRow))
         
         // Avoid to have two highlighted rows at the same time
-        if let visibleRows = tableView.indexPathsForVisibleRows {
-            for indexPath in visibleRows {
-                if let cellToUnhighlight = tableView.cellForRow(at: indexPath) as? SimplePickerTableViewCell , (indexPath as NSIndexPath).row != roundedRow {
-                    delegate?.pickerView?(self, viewForRow: (indexPath as NSIndexPath).row, index: indexForRow((indexPath as NSIndexPath).row), highlighted: false, reusingView: cellToUnhighlight.customView)
-                    delegate?.pickerView?(self, styleForLabel: cellToUnhighlight.titleLabel, highlighted: false)
-                }
+        for indexPath in collectionView.indexPathsForVisibleItems {
+            if let cellToUnhighlight = collectionView.cellForItem(at: indexPath) as? SimplePickerCollectionViewCell , (indexPath as NSIndexPath).row != roundedRow {
+                delegate?.pickerView?(self, viewForRow: (indexPath as NSIndexPath).row, index: indexForRow((indexPath as NSIndexPath).row), highlighted: false, reusingView: cellToUnhighlight.customView)
+                delegate?.pickerView?(self, styleForLabel: cellToUnhighlight.titleLabel, highlighted: false)
             }
         }
         
         // Highlight the current selected cell during scroll
-        if let cellToHighlight = tableView.cellForRow(at: IndexPath(row: roundedRow, section: 0)) as? SimplePickerTableViewCell {
+        if let cellToHighlight = collectionView.cellForItem(at: IndexPath(row: roundedRow, section: 0)) as? SimplePickerCollectionViewCell {
             delegate?.pickerView?(self, viewForRow: roundedRow, index: indexForRow(roundedRow), highlighted: true, reusingView: cellToHighlight.customView)
             delegate?.pickerView?(self, styleForLabel: cellToHighlight.titleLabel, highlighted: true)
         }
     }
     
+    func getPartialRow(scrollingDirection: ScrollingDirection, contentOffset: CGPoint) -> Float {
+        switch scrollingDirection {
+        case .horizontal:
+            return Float(contentOffset.x / layout.itemSize.width)
+        case .vertical:
+            return Float(contentOffset.y / layout.itemSize.height)
+        }
+    }
+
 }

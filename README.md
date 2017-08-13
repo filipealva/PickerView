@@ -195,29 +195,37 @@ Cool! You are ready to build and run your application with `PickerView`, it ill 
 
 ## Custom Appearance
 
-As you can customize the text appearance through `PickerViewDelegate`, you have two more options to customize your `PickerView`: scrolling style and selection style.
+As you can customize the text appearance through `PickerViewDelegate`, you have a few more options to customize your `PickerView`: scrolling direction, scrolling style and selection style.
+
+### Scrolling Direction
+
+Is defined by the `scrollingDirection` property of `PickerView` that is of type `ScrollingDirection` a nested `enum` that has two member values: `.horizontal` and `.vertical`.
+
+**.vertical**: The default scrolling experience, the user scrolls up to down, vertically on the `PickerView`
+
+**.horizontal**: With this scrolling style the user scrolls left to right, horizontally on the `PickerView`.
 
 ### Scrolling Style 
 
-Is defined by the `scrollingStyle` property of `PickerView` that is of type `ScrollingStyle` a nested `enum` that has two member values: `.Default` and `.Infinite`. It is explicit and you might already know what it does, but let me explain better:
+Is defined by the `scrollingStyle` property of `PickerView` that is of type `ScrollingStyle` a nested `enum` that has two member values: `.default` and `.infinite`. It is explicit and you might already know what it does, but let me explain better:
 
-**.Default**: The default scrolling experience, the user can scroll through your `PickerView` item's but he will reach the bottom or the top of your picker when it doesn't have more items to show.
+**.default**: The default scrolling experience, the user can scroll through your `PickerView` item's but he will reach the bottom or the top of your picker when it doesn't have more items to show.
 
-**.Infinite**: With this scrolling style the user will loop through the items of your `PickerView` and never reach the end, it provides an infinite scrolling experience.
+**.infinite**: With this scrolling style the user will loop through the items of your `PickerView` and never reach the end, it provides an infinite scrolling experience.
 
 ### Selection Style
 
-Is defined by the `selectionStyle` property of `PickerView` that is of type `SelectionStyle` a nested `enum` that has four member values: `.None`, `.DefaultIndicator`, `.Overlay` and `.Image`. For your better understanding, follow the explanation below:
+Is defined by the `selectionStyle` property of `PickerView` that is of type `SelectionStyle` a nested `enum` that has four member values: `.none`, `.defaultIndicator`, `.overlay` and `.image`. For your better understanding, follow the explanation below:
 
-**.None**: Don't uses any aditional view to highlight the selection, only the highlighted label style customization provided by delegate.
+**.none**: Don't uses any aditional view to highlight the selection, only the highlighted label style customization provided by delegate.
 
-**.DefaultIndicator**: Provides a simple selection indicator on the bottom of the highlighted row with full width and 2pt of height. The default color is its superview `tintColor` but you have free access to customize the DefaultIndicator through the `defaultSelectionIndicator` property.
+**.defaultIndicator**: Provides a simple selection indicator on the bottom of the highlighted row with full width and 2pt of height. The default color is its superview `tintColor` but you have free access to customize the DefaultIndicator through the `defaultSelectionIndicator` property.
 
-**.Overlay**: Provide a full width and height (the height you provided on delegate) view that overlay the highlighted row. The default color is its superview `tintColor` and the alpha is set to 0.25, but you have free access to customize it through the `selectionOverlay` property. 
+**.overlay**: Provide a full width and height (the height you provided on delegate) view that overlay the highlighted row. The default color is its superview `tintColor` and the alpha is set to 0.25, but you have free access to customize it through the `selectionOverlay` property. 
 
 *Tip: You can set the alpha to 1.0 and background color to .clearColor() and add your custom selection view as a `selectionOverlay` subview to make it looks as you want (don't forget to properly add the constraints related to `selectionOverlay` to keep your experience with any screen size).*
 
-**.Image**: Provide a full width and height image view selection indicator (the height you provided on delegate) without any image. You **must** have a selection indicator as an image and set it to the image view through the `selectionImageView` property.
+**.image**: Provide a full width and height image view selection indicator (the height you provided on delegate) without any image. You **must** have a selection indicator as an image and set it to the image view through the `selectionImageView` property.
 
 ## Who's Using It? 
 
