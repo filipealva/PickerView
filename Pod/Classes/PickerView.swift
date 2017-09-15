@@ -40,7 +40,7 @@ import UIKit
 }
 
 open class PickerView: UIView {
-    
+    public var contentHeight: CGFloat = 0
     // MARK: Nested Types
     
     fileprivate class SimplePickerTableViewCell: UITableViewCell {
@@ -151,7 +151,7 @@ open class PickerView: UIView {
         return selectionImageView
     }()
     
-    lazy var tableView: UITableView = {
+    public lazy var tableView: UITableView = {
         let tableView = UITableView()
         
         return tableView
@@ -429,6 +429,7 @@ open class PickerView: UIView {
     }
     
     fileprivate func indexForRow(_ row: Int) -> Int {
+        print("indexForRow \(row) when \(visibleIndexOfSelectedRow())")
         return row % (numberOfRowsByDataSource > 0 ? numberOfRowsByDataSource : 1)
     }
     
@@ -450,7 +451,9 @@ open class PickerView: UIView {
             
             let indexOfSelectedRow = visibleIndexOfSelectedRow()
             tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(indexOfSelectedRow) * rowHeight), animated: false)
+            print("scrolling position was set to visible index of selected row \(indexOfSelectedRow), at Y \(CGFloat(indexOfSelectedRow) * rowHeight) when row height is \(rowHeight)")
             
+            print("first selection is set to row \(currentSelectedRow), at index \(currentSelectedIndex)")
             delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
             
         } while !(numberOfRowsByDataSource > 0 && tableView.numberOfRows(inSection: 0) > 0)
@@ -496,11 +499,14 @@ open class PickerView: UIView {
     
         if let _ = currentSelectedRow , scrollingStyle == .default && currentSelectedRow == 0 {
             indexForSelectedRow = 0
+            print("First condition \(indexForSelectedRow)")
         } else if let _ = currentSelectedRow {
             indexForSelectedRow = middleIndex - (numberOfRowsByDataSource - currentSelectedRow)
+            print("Second condition \(indexForSelectedRow)")
         } else {
             let middleRow = Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
             indexForSelectedRow = middleIndex - (numberOfRowsByDataSource - middleRow)
+            print("Third condition \(indexForSelectedRow)")
         }
         
         return indexForSelectedRow
@@ -578,7 +584,17 @@ extension PickerView: UITableViewDelegate {
     // MARK: UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
         selectTappedRow((indexPath as NSIndexPath).row)
+    }
+    
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if scrollingStyle == .default {
+            let topAndBottomRowHeight = ((frame.height / 2) + (rowHeight / 2)) * 2
+            return topAndBottomRowHeight + (CGFloat(numberOfRowsByDataSource - 2) * rowHeight)
+        } else {
+            return CGFloat(numberOfRowsByDataSource * infinityRowsMultiplier) * rowHeight
+        }
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -586,11 +602,17 @@ extension PickerView: UITableViewDelegate {
         
         // When the scrolling reach the end on top/bottom we need to set the first/last row to appear in the center of PickerView, so that row must be bigger.
         if (indexPath as NSIndexPath).row == 0 {
+            print((frame.height / 2) + (rowHeight / 2))
+            contentHeight = contentHeight + (frame.height / 2) + (rowHeight / 2)
             return (frame.height / 2) + (rowHeight / 2)
         } else if numberOfRowsInPickerView > 0 && (indexPath as NSIndexPath).row == numberOfRowsInPickerView - 1 {
+            print((frame.height / 2) + (rowHeight / 2))
+            contentHeight = contentHeight + (frame.height / 2) + (rowHeight / 2)
             return (frame.height / 2) + (rowHeight / 2)
         }
         
+        print(rowHeight)
+        contentHeight = contentHeight + rowHeight
         return rowHeight
     }
     

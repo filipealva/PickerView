@@ -50,6 +50,11 @@ class ExamplePickerViewController: UIViewController {
         configureExamplePicker()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
     // MARK: - Configure Subviews
     
     fileprivate func configureNavigationBar() {
