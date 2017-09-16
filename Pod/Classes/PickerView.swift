@@ -40,7 +40,7 @@ import UIKit
 }
 
 open class PickerView: UIView {
-    public var contentHeight: CGFloat = 0
+    
     // MARK: Nested Types
     
     fileprivate class SimplePickerTableViewCell: UITableViewCell {
@@ -158,6 +158,7 @@ open class PickerView: UIView {
     }()
     
     fileprivate var infinityRowsMultiplier: Int = 1
+    fileprivate var hasTouchedPickerViewYet = false
     open var currentSelectedRow: Int!
     open var currentSelectedIndex: Int {
         get {
@@ -240,6 +241,9 @@ open class PickerView: UIView {
     }
     
     fileprivate func setupTableView() {
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.separatorColor = .none
@@ -360,7 +364,7 @@ open class PickerView: UIView {
         if scrollingStyle == .default {
             return 1
         }
-    
+
         if numberOfRowsByDataSource > 100 {
             return 100
         } else if numberOfRowsByDataSource < 100 && numberOfRowsByDataSource > 50 {
@@ -429,7 +433,6 @@ open class PickerView: UIView {
     }
     
     fileprivate func indexForRow(_ row: Int) -> Int {
-        print("indexForRow \(row) when \(visibleIndexOfSelectedRow())")
         return row % (numberOfRowsByDataSource > 0 ? numberOfRowsByDataSource : 1)
     }
     
@@ -451,9 +454,7 @@ open class PickerView: UIView {
             
             let indexOfSelectedRow = visibleIndexOfSelectedRow()
             tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(indexOfSelectedRow) * rowHeight), animated: false)
-            print("scrolling position was set to visible index of selected row \(indexOfSelectedRow), at Y \(CGFloat(indexOfSelectedRow) * rowHeight) when row height is \(rowHeight)")
             
-            print("first selection is set to row \(currentSelectedRow), at index \(currentSelectedIndex)")
             delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
             
         } while !(numberOfRowsByDataSource > 0 && tableView.numberOfRows(inSection: 0) > 0)
@@ -499,14 +500,11 @@ open class PickerView: UIView {
     
         if let _ = currentSelectedRow , scrollingStyle == .default && currentSelectedRow == 0 {
             indexForSelectedRow = 0
-            print("First condition \(indexForSelectedRow)")
         } else if let _ = currentSelectedRow {
             indexForSelectedRow = middleIndex - (numberOfRowsByDataSource - currentSelectedRow)
-            print("Second condition \(indexForSelectedRow)")
         } else {
             let middleRow = Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
             indexForSelectedRow = middleIndex - (numberOfRowsByDataSource - middleRow)
-            print("Third condition \(indexForSelectedRow)")
         }
         
         return indexForSelectedRow
@@ -544,7 +542,6 @@ extension PickerView: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let indexOfSelectedRow = visibleIndexOfSelectedRow()
         
         let pickerViewCell = tableView.dequeueReusableCell(withIdentifier: pickerViewCellIdentifier, for: indexPath) as! SimplePickerTableViewCell
@@ -584,17 +581,7 @@ extension PickerView: UITableViewDelegate {
     // MARK: UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         selectTappedRow((indexPath as NSIndexPath).row)
-    }
-    
-    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if scrollingStyle == .default {
-            let topAndBottomRowHeight = ((frame.height / 2) + (rowHeight / 2)) * 2
-            return topAndBottomRowHeight + (CGFloat(numberOfRowsByDataSource - 2) * rowHeight)
-        } else {
-            return CGFloat(numberOfRowsByDataSource * infinityRowsMultiplier) * rowHeight
-        }
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -602,17 +589,11 @@ extension PickerView: UITableViewDelegate {
         
         // When the scrolling reach the end on top/bottom we need to set the first/last row to appear in the center of PickerView, so that row must be bigger.
         if (indexPath as NSIndexPath).row == 0 {
-            print((frame.height / 2) + (rowHeight / 2))
-            contentHeight = contentHeight + (frame.height / 2) + (rowHeight / 2)
             return (frame.height / 2) + (rowHeight / 2)
         } else if numberOfRowsInPickerView > 0 && (indexPath as NSIndexPath).row == numberOfRowsInPickerView - 1 {
-            print((frame.height / 2) + (rowHeight / 2))
-            contentHeight = contentHeight + (frame.height / 2) + (rowHeight / 2)
             return (frame.height / 2) + (rowHeight / 2)
         }
-        
-        print(rowHeight)
-        contentHeight = contentHeight + rowHeight
+
         return rowHeight
     }
     
@@ -660,7 +641,7 @@ extension PickerView: UIScrollViewDelegate {
         if let visibleRows = tableView.indexPathsForVisibleRows {
             for indexPath in visibleRows {
                 if let cellToUnhighlight = tableView.cellForRow(at: indexPath) as? SimplePickerTableViewCell , (indexPath as NSIndexPath).row != roundedRow {
-                    delegate?.pickerView?(self, viewForRow: (indexPath as NSIndexPath).row, index: indexForRow((indexPath as NSIndexPath).row), highlighted: false, reusingView: cellToUnhighlight.customView)
+                    let _ = delegate?.pickerView?(self, viewForRow: (indexPath as NSIndexPath).row, index: indexForRow((indexPath as NSIndexPath).row), highlighted: false, reusingView: cellToUnhighlight.customView)
                     delegate?.pickerView?(self, styleForLabel: cellToUnhighlight.titleLabel, highlighted: false)
                 }
             }
@@ -668,8 +649,8 @@ extension PickerView: UIScrollViewDelegate {
         
         // Highlight the current selected cell during scroll
         if let cellToHighlight = tableView.cellForRow(at: IndexPath(row: roundedRow, section: 0)) as? SimplePickerTableViewCell {
-            delegate?.pickerView?(self, viewForRow: roundedRow, index: indexForRow(roundedRow), highlighted: true, reusingView: cellToHighlight.customView)
-            delegate?.pickerView?(self, styleForLabel: cellToHighlight.titleLabel, highlighted: true)
+            let _ = delegate?.pickerView?(self, viewForRow: roundedRow, index: indexForRow(roundedRow), highlighted: true, reusingView: cellToHighlight.customView)
+            let _ = delegate?.pickerView?(self, styleForLabel: cellToHighlight.titleLabel, highlighted: true)
         }
     }
     
