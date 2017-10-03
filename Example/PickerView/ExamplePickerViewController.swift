@@ -160,9 +160,9 @@ extension ExamplePickerViewController: PickerViewDelegate {
         label.textAlignment = .center
         if #available(iOS 8.2, *) {
             if (highlighted) {
-                label.font = UIFont.systemFont(ofSize: 26.0, weight: UIFontWeightLight)
+                label.font = UIFont.systemFont(ofSize: 26.0, weight: UIFont.Weight.light)
             } else {
-                label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFontWeightLight)
+                label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.light)
             }
         } else {
             if (highlighted) {
@@ -212,7 +212,7 @@ extension ExamplePickerViewController: PickerViewDelegate {
             label.textAlignment = .center
             
             if #available(iOS 8.2, *) {
-                label.font = UIFont.systemFont(ofSize: 26.0, weight: UIFontWeightLight)
+                label.font = UIFont.systemFont(ofSize: 26.0, weight: UIFont.Weight.light)
             } else {
                 label.font = UIFont(name: "HelveticaNeue-Light", size: 26.0)
             }
