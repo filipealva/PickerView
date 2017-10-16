@@ -510,7 +510,7 @@ open class PickerView: UIView {
         return indexForSelectedRow
     }
     
-    open func selectRow(_ row : Int, animated: Bool) {
+    open func selectRow(_ row: Int, animated: Bool) {
         
         var finalRow = row;
         
