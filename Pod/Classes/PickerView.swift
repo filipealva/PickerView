@@ -37,6 +37,7 @@ import UIKit
     @objc optional func pickerView(_ pickerView: PickerView, didTapRow row: Int, index: Int)
     @objc optional func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool)
     @objc optional func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView?
+    @objc optional func pickerView(_ pickerView: PickerView, didEndScrollingRow row: Int, index: Int)
 }
 
 open class PickerView: UIView {
@@ -530,7 +531,6 @@ open class PickerView: UIView {
     open func reloadPickerView() {
         tableView.reloadData()
     }
-    
 }
 
 extension PickerView: UITableViewDataSource {
@@ -631,6 +631,12 @@ extension PickerView: UIScrollViewDelegate {
         }
         
         isScrolling = false
+        
+        delegate?.pickerView?(self, didEndScrollingRow: currentSelectedRow, index: currentSelectedIndex)
+    }
+    
+    open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        delegate?.pickerView?(self, didEndScrollingRow: currentSelectedRow, index: currentSelectedIndex)
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
