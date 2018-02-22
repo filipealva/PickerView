@@ -185,24 +185,7 @@ open class PickerView: UIView {
     
     open var selectionStyle = SelectionStyle.none {
         didSet {
-            switch selectionStyle {
-            case .defaultIndicator:
-                defaultSelectionIndicator.alpha = 1.0
-                selectionOverlay.alpha = 0.0
-                selectionImageView.alpha = 0.0
-            case .overlay:
-                selectionOverlay.alpha = 0.25
-                defaultSelectionIndicator.alpha = 0.0
-                selectionImageView.alpha = 0.0
-            case .image:
-                selectionImageView.alpha = 1.0
-                selectionOverlay.alpha = 0.0
-                defaultSelectionIndicator.alpha = 0.0
-            case .none:
-                selectionOverlay.alpha = 0.0
-                defaultSelectionIndicator.alpha = 0.0
-                selectionImageView.alpha = 0.0
-            }
+            setupSelectionViewsVisibility()
         }
     }
     
@@ -279,6 +262,27 @@ open class PickerView: UIView {
         let tableViewT = NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: self,
                                                 attribute: .trailing, multiplier: 1, constant: 0)
         addConstraint(tableViewT)
+    }
+
+    fileprivate func setupSelectionViewsVisibility() {
+        switch selectionStyle {
+        case .defaultIndicator:
+            defaultSelectionIndicator.alpha = 1.0
+            selectionOverlay.alpha = 0.0
+            selectionImageView.alpha = 0.0
+        case .overlay:
+            selectionOverlay.alpha = 0.25
+            defaultSelectionIndicator.alpha = 0.0
+            selectionImageView.alpha = 0.0
+        case .image:
+            selectionImageView.alpha = 1.0
+            selectionOverlay.alpha = 0.0
+            defaultSelectionIndicator.alpha = 0.0
+        case .none:
+            selectionOverlay.alpha = 0.0
+            defaultSelectionIndicator.alpha = 0.0
+            selectionImageView.alpha = 0.0
+        }
     }
     
     fileprivate func setupSelectionOverlay() {
@@ -460,21 +464,17 @@ open class PickerView: UIView {
         delegate?.pickerView?(self, didTapRow: row, index: indexForRow(row))
         selectRow(row, animated: true)
     }
-    
-    /**
-        Configure the first row selection: If some pre-selected row was set, we select it, else we select the nearby to middle at all.
-    */
-    fileprivate func configureFirstSelection() {
-        let rowToSelect = currentSelectedRow != nil ? currentSelectedRow : Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
-        selectedNearbyToMiddleRow(rowToSelect!)
-    }
-    
+
     fileprivate func turnPickerViewOn() {
         tableView.isScrollEnabled = true
+        setupSelectionViewsVisibility()
     }
     
     fileprivate func turnPickerViewOff() {
         tableView.isScrollEnabled = false
+        selectionOverlay.alpha = 0.0
+        defaultSelectionIndicator.alpha = 0.0
+        selectionImageView.alpha = 0.0
     }
     
     /**
