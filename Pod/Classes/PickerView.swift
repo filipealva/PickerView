@@ -502,7 +502,6 @@ open class PickerView: UIView {
     }
     
     open func selectRow(_ row : Int, animated: Bool) {
-        
         var finalRow = row;
         
         if (scrollingStyle == .infinite && row < numberOfRowsByDataSource) {

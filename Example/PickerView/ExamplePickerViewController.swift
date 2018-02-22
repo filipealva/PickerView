@@ -30,7 +30,7 @@ class ExamplePickerViewController: UIViewController {
     
         return numbers
     }()
-    
+
     let osxNames = ["Cheetah", "Puma", "Jaguar", "Panther", "Tiger", "Leopard", "Snow Leopard", "Lion", "Montain Lion",
                     "Mavericks", "Yosemite", "El Capitan"]
     
@@ -52,7 +52,6 @@ class ExamplePickerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
     }
     
     // MARK: - Configure Subviews
