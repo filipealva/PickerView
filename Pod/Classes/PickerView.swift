@@ -502,22 +502,23 @@ open class PickerView: UIView {
     }
     
     open func selectRow(_ row : Int, animated: Bool) {
-        var finalRow = row;
+        var finalRow = row
         
-        if (scrollingStyle == .infinite && row < numberOfRowsByDataSource) {
-            let selectedRow = currentSelectedRow ?? Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
-            let diff = (row % numberOfRowsByDataSource) - (selectedRow % numberOfRowsByDataSource)
-            finalRow = selectedRow + diff
+        if (scrollingStyle == .infinite && row <= numberOfRowsByDataSource) {
+            let middleMultiplier = scrollingStyle == .infinite ? (infinityRowsMultiplier / 2) : infinityRowsMultiplier
+            let middleIndex = numberOfRowsByDataSource * middleMultiplier
+            finalRow = middleIndex - (numberOfRowsByDataSource - finalRow)
         }
         
         currentSelectedRow = finalRow
         
         delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
         
-        tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(finalRow) * rowHeight), animated: animated)
+        tableView.setContentOffset(CGPoint(x: 0.0, y: CGFloat(currentSelectedRow) * rowHeight), animated: animated)
     }
     
     open func reloadPickerView() {
+        shouldSelectNearbyToMiddleRow = true
         tableView.reloadData()
     }
     
@@ -629,7 +630,7 @@ extension PickerView: UIScrollViewDelegate {
         }
         
         // Update the currentSelectedRow and notify the delegate that we have a new selected row.
-        currentSelectedRow = roundedRow
+        currentSelectedRow = roundedRow % numberOfRowsByDataSource
         
         delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
     }
