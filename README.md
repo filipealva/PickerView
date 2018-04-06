@@ -246,3 +246,9 @@ If you liked the project and want it to continue, please star it. It is a way fo
 ## License
 
 PickerView is available under the MIT license. See the LICENSE file for more info.
+
+## Donate 
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V378CFXGH2X4A)
+
+
