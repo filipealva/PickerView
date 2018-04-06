@@ -630,7 +630,7 @@ extension PickerView: UIScrollViewDelegate {
         }
         
         // Update the currentSelectedRow and notify the delegate that we have a new selected row.
-        currentSelectedRow = roundedRow % numberOfRowsByDataSource
+        currentSelectedRow = roundedRow
         
         delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
     }
