@@ -237,4 +237,8 @@ extension ExamplePickerViewController: PickerViewDelegate {
         return customView
     }
     
+    func pickerView(_ pickerView: PickerView, didEndScrollingRow row: Int, index: Int) {
+        print("Scroll animation ends in current Row \(row) and current Index \(index)")
+    }
+    
 }
