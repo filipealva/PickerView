@@ -47,7 +47,7 @@
 		A4370BC2C0E37DFA3B9D450F /* Pods_PickerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickerView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EB1918A7488956224BFB53 /* Pods-PickerView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickerView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PickerView_Example/Pods-PickerView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C48CD1C1BE9DF01C6B0FDC9C /* Pods-PickerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickerView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PickerView_Tests/Pods-PickerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		D1D7F1AF39B888BC3DECCD0F /* PickerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PickerView.podspec; path = ../PickerView.podspec; sourceTree = "<group>"; };
+		D1D7F1AF39B888BC3DECCD0F /* PickerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PickerView.podspec; path = ../PickerView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FE5EB6DFC7C3D1F9FC165042 /* Pods-PickerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickerView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-PickerView_Example/Pods-PickerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
