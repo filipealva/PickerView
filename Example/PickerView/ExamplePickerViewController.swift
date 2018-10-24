@@ -125,12 +125,12 @@ extension ExamplePickerViewController: PickerViewDataSource {
         }
     }
     
-    func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
+    func pickerView(_ pickerView: PickerView, titleForRow row: Int) -> String {
         switch presentationType {
         case .numbers(_, _):
-            return numbers[index]
+            return numbers[row]
         case .names(_, _):
-            return osxNames[index]
+            return osxNames[row]
         }
     }
     
@@ -143,13 +143,13 @@ extension ExamplePickerViewController: PickerViewDelegate {
     func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
         return 50.0
     }
-    
-    func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {
+
+    func pickerView(_ pickerView: PickerView, didSelectRow row: Int) {
         switch presentationType {
         case .numbers(_, _):
-            currentSelectedValue = numbers[index]
+            currentSelectedValue = numbers[row]
         case .names(_, _):
-            currentSelectedValue = osxNames[index]
+            currentSelectedValue = osxNames[row]
         }
 
         print(currentSelectedValue ?? "")
@@ -178,8 +178,7 @@ extension ExamplePickerViewController: PickerViewDelegate {
         }
     }
     
-    func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
-        
+    func pickerView(_ pickerView: PickerView, viewForRow row: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
         if (itemsType != .customView) {
             return nil
         }
@@ -224,9 +223,9 @@ extension ExamplePickerViewController: PickerViewDelegate {
         
         switch presentationType {
         case .numbers(_, _):
-            label?.text = numbers[index]
+            label?.text = numbers[row]
         case .names(_, _):
-            label?.text = osxNames[index]
+            label?.text = osxNames[row]
         }
         
         let alpha: CGFloat = highlighted ? 1.0 : 0.5
