@@ -27,7 +27,7 @@ class ExamplePickerViewController: UIViewController {
         for index in 1...10 {
             numbers.append(String(index))
         }
-    
+
         return numbers
     }()
 

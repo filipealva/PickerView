@@ -325,7 +325,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PickerView_Tests/Pods-PickerView_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PickerView-iOS10.0/PickerView.framework",
+				"${BUILT_PRODUCTS_DIR}/PickerView/PickerView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -343,7 +343,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PickerView_Example/Pods-PickerView_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PickerView-iOS8.0/PickerView.framework",
+				"${BUILT_PRODUCTS_DIR}/PickerView/PickerView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
