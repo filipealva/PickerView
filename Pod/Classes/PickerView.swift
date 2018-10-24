@@ -109,6 +109,12 @@ open class PickerView: UIView {
             return dataSource?.pickerViewNumberOfRows(self) ?? 0
         }
     }
+
+    fileprivate var indexesByDataSource: Int {
+        get {
+            return numberOfRowsByDataSource > 0 ? numberOfRowsByDataSource - 1 : numberOfRowsByDataSource
+        }
+    }
     
     var rowHeight: CGFloat {
         get {
@@ -494,7 +500,7 @@ open class PickerView: UIView {
         } else if let _ = currentSelectedRow {
             indexForSelectedRow = middleIndex - (numberOfRowsByDataSource - currentSelectedRow)
         } else {
-            let middleRow = Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
+            let middleRow = Int(floor(Float(indexesByDataSource) / 2.0))
             indexForSelectedRow = middleIndex - (numberOfRowsByDataSource - middleRow)
         }
         
@@ -535,10 +541,10 @@ extension PickerView: UITableViewDataSource {
         if shouldSelectNearbyToMiddleRow && numberOfRows > 0 {
             // Configure the PickerView to select the middle row when the orientation changes during scroll
             if isScrolling {
-                let middleRow = Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
+                let middleRow = Int(floor(Float(indexesByDataSource) / 2.0))
                 selectedNearbyToMiddleRow(middleRow)
             } else {
-                let rowToSelect = currentSelectedRow != nil ? currentSelectedRow : Int(ceil(Float(numberOfRowsByDataSource) / 2.0))
+                let rowToSelect = currentSelectedRow != nil ? currentSelectedRow : Int(floor(Float(indexesByDataSource) / 2.0))
                 selectedNearbyToMiddleRow(rowToSelect!)
             }
         }
