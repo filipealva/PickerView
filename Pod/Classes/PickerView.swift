@@ -174,6 +174,7 @@ open class PickerView: UIView {
     
     fileprivate var firstTimeOrientationChanged = true
     fileprivate var orientationChanged = false
+    fileprivate var screenSize: CGSize = UIScreen.main.bounds.size
     fileprivate var isScrolling = false
     fileprivate var setupHasBeenDone = false
     fileprivate var shouldSelectNearbyToMiddleRow = true
@@ -418,6 +419,12 @@ open class PickerView: UIView {
     }
     
     @objc func adjustCurrentSelectedAfterOrientationChanges() {
+        guard screenSize != UIScreen.main.bounds.size else {
+            return
+        }
+
+        screenSize = UIScreen.main.bounds.size
+
         setNeedsLayout()
         layoutIfNeeded()
         
