@@ -84,7 +84,7 @@ The `PickerViewDataSource` protocol consists in two required methods:
 ```swift
 @objc public protocol PickerViewDataSource: class {
     func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int
-    func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String
+    func pickerView(_ pickerView: PickerView, titleForRow row: Int) -> String
 }
 ```
 
@@ -99,8 +99,8 @@ func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
 And the title for each row:
 
 ```swift
-func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
-    let item = itemsThatYouWantToPresent[index] // NOTE: Use `index` instead of `row` to retrieve your data correctly
+func pickerView(_ pickerView: PickerView, titleForRow row: Int) -> String {
+    let item = itemsThatYouWantToPresent[row]
     return item.text
 }
 ```
@@ -114,10 +114,10 @@ The `PickerViewDelegate` consists in five methods:
 ```swift
 @objc public protocol PickerViewDelegate: class {
     func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat
-    optional func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int)
-    optional func pickerView(_ pickerView: PickerView, didTapRow row: Int, index: Int)
+    optional func pickerView(_ pickerView: PickerView, didSelectRow row: Int)
+    optional func pickerView(_ pickerView: PickerView, didTapRow row: Int)
     optional func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool)
-    optional func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView?
+    optional func pickerView(_ pickerView: PickerView, viewForRow row: Int, highlighted: Bool, reusingView view: UIView?) -> UIView?
 }
 ```
 
@@ -138,10 +138,10 @@ func pickerView(_ pickerView: PickerView, didSelectRow row: Int) {
 }
 ```
 
-`PickerView` enable the user to tap a visible row to select it. We've a delegate method to track this tap behavior, so `pickerView(_: PickerView, didTapRow row: Int, index: Int)` is called only when the user selects a row by tapping it:
+`PickerView` enable the user to tap a visible row to select it. We've a delegate method to track this tap behavior, so `pickerView(_: PickerView, didTapRow row: Int)` is called only when the user selects a row by tapping it:
 
 ```swift
-func pickerView(_ pickerView: PickerView, didTapRow row: Int, index: Int) {
+func pickerView(_ pickerView: PickerView, didTapRow row: Int) {
     print("The row \(row) was tapped by the user") 
 }
 ```
@@ -165,7 +165,7 @@ func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highligh
 If you want to provide a totally customized view instead of presenting just a row with a text label inside
 
 ```swift
-func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
+func pickerView(_ pickerView: PickerView, viewForRow row: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
     var customView = view
     
     // Verify if there is a view to reuse, if not, init your view. 
@@ -175,7 +175,7 @@ func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highl
     }
     
     // **IMPORTANT**: As you are providing a totally custom view, PickerView doesn't know where to bind the data provided on PickerViewDataSource, so you will need to bind the data in this method. 
-    customView.yourCustomTextLabel.text = itemsThatYouWantToPresent[index].text
+    customView.yourCustomTextLabel.text = itemsThatYouWantToPresent[row].text
     
     // Don't forget to make your style customizations for highlighted state 
     let alphaBasedOnHighlighted: CGFloat = highlighted ? 1.0 : 0.5
@@ -187,7 +187,7 @@ func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highl
 
 #### Label or Custom View?
 
-Even if `func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool)` and `func pickerView(_ pickerView: PickerView, viewForRow row: Int, index: Int, highlited: Bool, reusingView view: UIView?)` are optional methods in `PickerViewDelegate` you must implement at least one of them. If you want to present your data using only a label (which you can customize too), implement the first one, but if you want to present your data in a totally customized view, you should implement the second one. 
+Even if `func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool)` and `func pickerView(_ pickerView: PickerView, viewForRow row: Int, highlited: Bool, reusingView view: UIView?)` are optional methods in `PickerViewDelegate` you must implement at least one of them. If you want to present your data using only a label (which you can customize too), implement the first one, but if you want to present your data in a totally customized view, you should implement the second one. 
 
 **NOTE:** If you implement the two methods mentioned above, `PickerView` will always present your data using the custom view you provided. 
 
