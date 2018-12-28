@@ -1,5 +1,7 @@
 # PickerView
 
+[![CocoaPods](https://img.shields.io/cocoapods/dt/PickerView.svg?style=flat-square)](http://cocoapods.org/pods/PickerView)
+[![CocoaPods](https://img.shields.io/cocoapods/at/PickerView.svg?style=flat-square)](http://cocoapods.org/pods/PickerView)
 [![Version](https://img.shields.io/cocoapods/v/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
 [![License](https://img.shields.io/cocoapods/l/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
 [![Platform](https://img.shields.io/cocoapods/p/PickerView.svg?style=flat)](http://cocoapods.org/pods/PickerView)
